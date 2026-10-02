@@ -95,7 +95,12 @@ export default function Footer({ settings = {} }) {
           </div>
         </div>
       </div>
-      <div className="cp">{copyright}</div>
+      <div className="cp">
+        {copyright}{' '}
+        <a className="cp-dev" href="https://nivtech.co.in/" target="_blank" rel="noopener">
+          | Develop by NivTech
+        </a>
+      </div>
       {footer.ghostText && <Ghost className="gt" text={footer.ghostText} />}
     </footer>
   );

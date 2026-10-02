@@ -2,7 +2,7 @@
 .c{max-width:107.5rem;margin:0 auto;padding:0 1rem}
 /* hero */
 .a-hero{display:grid;grid-template-columns:52.5rem 1fr;gap:9rem;align-items:center;padding:7.3rem 0 7rem}
-.a-hero h1{font-size:2.75rem;line-height:1.36;font-weight:700;text-transform:uppercase;letter-spacing:-.01em}
+.a-hero h1{font-size:2.75rem;line-height:1.36;font-weight:700;text-transform:uppercase;}
 .a-hero h4{color:var(--orange);font-size:1.6rem;font-weight:700;margin:2.4rem 0 2rem}
 .a-hero p{font-size:1.12rem;line-height:1.72;max-width:49rem;margin-bottom:2.3rem;color:#1a1a1a}
 .a-hero .btn span{font-size:.78rem;padding:1.45rem 1.5rem}.a-hero .btn i{width:2.3rem}
@@ -12,13 +12,13 @@
 .hero-img.in img{transform:scale(1)}
 /* expertise */
 .exp{padding:2rem 0 5rem}
-.exp h2,.cq h2{font-size:2.75rem;font-weight:700;color:var(--blue);text-transform:uppercase;text-align:center;letter-spacing:-.005em}
+.exp h2,.cq h2{font-size:2.75rem;font-weight:700;color:var(--blue);text-transform:uppercase;text-align:center;}
 .exp .sb,.cq .sb{text-align:center;font-size:1.02rem;margin:1.3rem 0 3rem}
 .erow{display:grid;grid-template-columns:49.1rem 1fr;border-top:1px solid #e3e5ea;padding:2.2rem 0;min-height:30rem;align-items:start}
 .erow:first-of-type{border-top:0}
 .erow .tx{display:flex;flex-direction:column;justify-content:space-between;height:100%;min-height:26rem}
 .erow small{display:block;font-weight:800;font-size:1.05rem;margin-bottom:.4rem}
-.erow h3{font-size:1.5rem;font-weight:700;letter-spacing:-.005em}
+.erow h3{font-size:1.5rem;font-weight:700;}
 .erow p{font-size:1.1rem;line-height:1.7;max-width:33rem;padding-left:.2rem}
 .erow .im{width:28.75rem;height:21rem;border-radius:1.15rem;overflow:hidden;transition:width .9s cubic-bezier(.2,.7,.2,1),height .9s cubic-bezier(.2,.7,.2,1);box-shadow:0 8px 26px rgba(0,0,0,.08)}
 .erow .im img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s ease}
@@ -28,7 +28,7 @@
 .jr{position:relative;background:#0b0c0e url(/images/timeline-bg.jpg) center/cover;color:#fff;padding:5.5rem 0 5rem;overflow:hidden}
 .jr:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,9,11,.55),rgba(8,9,11,.85))}
 .jr .c{position:relative}
-.jr h2{text-align:center;font-size:2.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.005em}
+.jr h2{text-align:center;font-size:2.75rem;font-weight:700;text-transform:uppercase;}
 .tabs2{display:flex;gap:.2rem;margin:3.4rem 0 1.2rem;padding-left:3rem;flex-wrap:wrap}
 .tabs2 button{background:none;border:0;color:#fff;font:500 .75rem 'Montserrat';padding:.85rem 1.7rem;cursor:pointer;border-radius:2px;transition:background .3s,transform .3s;min-width:4.4rem}
 .tabs2 button:hover{background:rgba(255,255,255,.12)}

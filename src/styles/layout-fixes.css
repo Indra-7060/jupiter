@@ -40,10 +40,10 @@
 /* 4. Header menu: links never wrap; tighter spacing on narrower laptops. */
 .nav > a, .nav .nv > a { white-space: nowrap; }
 @media (min-width: 901px) and (max-width: 1280px) {
-  .nav { gap: 1.5rem; letter-spacing: .06em; }
+  .nav { gap: 1.5rem; }
 }
 @media (min-width: 901px) and (max-width: 1100px) {
-  .nav { gap: 1.05rem; letter-spacing: .03em; }
+  .nav { gap: 1.05rem; }
 }
 .hdr .logo { flex: 0 0 auto; }
 .hdr .wrap { gap: 1.5rem; }
@@ -67,7 +67,7 @@
 @media (min-width: 901px) and (max-width: 1280px) {
   .hdr .logo img { height: 3.9rem; }
   .hdr .cb.sm .tx { min-width: 0; }
-  .hdr .cb.sm .tx b { padding: 0 1.1rem; letter-spacing: .1em; }
+  .hdr .cb.sm .tx b { padding: 0 1.1rem; }
 }
 /* The header button replaces the Contact menu item. On phones it is hidden, so the same link
    appears as the last item of the slide-out menu instead. */
@@ -96,10 +96,10 @@
   box-shadow: 0 30px 80px rgba(0, 0, 0, .35); display: flex; flex-direction: column; overflow: hidden; padding: 0; animation: applyRise .28s cubic-bezier(.2,.7,.2,1); }
 .apply-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 26px 30px 20px; border-bottom: 1px solid #e8ebf2;
   background: linear-gradient(180deg, #f6f8fc, #fff); flex: none; }
-.apply-head .kick { display: block; font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #e79a1c; margin-bottom: 6px; }
+.apply-head .kick { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #e79a1c; margin-bottom: 6px; }
 .apply-head h3 { font-size: 24px; line-height: 1.2; font-weight: 800; color: #10182b; margin: 0; }
 .apply-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-.apply-meta span { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #2b3c5a; background: #eaf0fa; border-radius: 999px; padding: 5px 10px; }
+.apply-meta span { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #2b3c5a; background: #eaf0fa; border-radius: 999px; padding: 5px 10px; }
 .apply-close { flex: none; width: 38px; height: 38px; border-radius: 50%; border: 1px solid #e1e6ef; background: #fff; display: grid; place-items: center; cursor: pointer; color: #333;
   transition: background .2s, transform .2s; }
 .apply-close:hover { background: #f1f4fa; transform: rotate(90deg); }
@@ -111,7 +111,7 @@
 .af-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; }
 .af-wide { grid-column: 1 / -1; }
 .af-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.af-field > span, .af-label { font-size: 12.5px; font-weight: 700; color: #2b3c5a; letter-spacing: .01em; }
+.af-field > span, .af-label { font-size: 12.5px; font-weight: 700; color: #2b3c5a; }
 .af-field i, .af-label i { color: #c0392b; font-style: normal; }
 .af-label { display: block; margin-bottom: 6px; }
 .apply-form input:not([type=file]), .apply-form textarea { width: 100%; font: inherit; font-size: 15px; color: #111; padding: 12px 14px; border: 1px solid #d6dce7; border-radius: 10px;
@@ -198,7 +198,7 @@
 }
 @media (min-width: 901px) and (max-width: 1200px) {
   .hdr .mega .mi { grid-template-columns: 24rem minmax(0, 1fr); gap: 3rem; }
-  .hdr .mega .mh .mcta { font-size: .95rem; letter-spacing: .06em; padding: 1.1rem 1.4rem; }
+  .hdr .mega .mh .mcta { font-size: .95rem; padding: 1.1rem 1.4rem; }
   /* narrow cards: titles may use two lines; the space is reserved so every menu keeps the same height */
   .hdr .mega ul.mg .tx2 b { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; min-height: 2.5em; }
 }
@@ -215,7 +215,7 @@
 @media (min-width: 901px) {
   .cb, .cb:not(.sm), .cb.o, .cb.w { height: 3.7rem; }
   .cb .tx, .cb:not(.sm) .tx, .cb.o .tx, .cb.w .tx { height: 3.7rem; min-width: 14.4rem; }
-  .cb .tx b, .cb.o .tx b, .cb.w .tx b { height: 3.7rem; line-height: 3.7rem; font-size: 1rem; letter-spacing: .13em; font-weight: 600; padding: 0 1.4rem; }
+  .cb .tx b, .cb.o .tx b, .cb.w .tx b { height: 3.7rem; line-height: 3.7rem; font-size: 1rem; font-weight: 600; padding: 0 1.4rem; }
   .cb.o .tx b, .cb.w .tx b { height: calc(3.7rem - 2px); line-height: calc(3.7rem - 2px); }
   .cb:hover .tx span { transform: translateY(-3.7rem); }
   .cb.o:hover .tx span, .cb.w:hover .tx span { transform: translateY(calc(-3.7rem + 2px)); }
@@ -277,7 +277,7 @@
 .wa-ic { flex: none; width: 58px; height: 58px; display: grid; place-items: center; }
 .wa-ic svg { width: 32px; height: 32px; fill: #fff; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
 .wa-tx {
-  max-width: 0; opacity: 0; font-family: inherit; font-size: 16px; font-weight: 700; letter-spacing: .01em;
+  max-width: 0; opacity: 0; font-family: inherit; font-size: 16px; font-weight: 700;
   transition: max-width .45s cubic-bezier(.2, .7, .2, 1), opacity .3s .05s, padding .45s cubic-bezier(.2, .7, .2, 1);
 }
 @media (hover: hover) {
@@ -294,3 +294,14 @@
 }
 @media print { .wa-fab { display: none; } }
 @media (prefers-reduced-motion: reduce) { .wa-fab, .wa-tx, .wa-ic svg { animation: none; transition: none; } }
+
+/* 14. Footer developer credit, sits on the copyright line in the same style. */
+.cp .cp-dev { color: inherit; text-decoration: none; white-space: nowrap; transition: color .25s; }
+.cp .cp-dev:hover, .cp .cp-dev:focus-visible { color: #1f4e96; }
+
+/* 15. Phones: outlined buttons keep their label vertically centred in the 52px button. */
+@media (max-width: 900px) {
+  .cb.o .tx b, .cb.w .tx b { height: 50px !important; line-height: 50px !important; }
+  .cb:hover .tx span { transform: translateY(-52px); }
+  .cb.o:hover .tx span, .cb.w:hover .tx span { transform: translateY(-50px); }
+}
