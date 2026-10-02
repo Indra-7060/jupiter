@@ -21,7 +21,7 @@ export const getSettings = cache(async function getSettings() {
 export const getMenu = cache(async function getMenu() {
   const [settings, cats, machines] = await Promise.all([getSettings(), getProductCategories(), getMachines()]);
   const h = settings.header || {};
-  const mega = (m = {}, href, width) => ({ ...m, ctaHref: m.ctaHref || href, width });
+  const mega = (m = {}, href) => ({ ...m, ctaHref: m.ctaHref || href });
   const items = [
     { id: 'home', label: h.homeLabel || 'Home', href: '/', kind: 'link', children: [] },
     { id: 'about', label: h.aboutLabel || 'About Us', href: '/about', kind: 'link', children: [] },
@@ -30,7 +30,7 @@ export const getMenu = cache(async function getMenu() {
       label: h.powerPressLabel || 'Power Press',
       href: '/power-press',
       kind: 'mega',
-      mega: mega(h.powerPressMega, '/power-press', machines.length > 4 ? 'w2' : 'w1'),
+      mega: mega(h.powerPressMega, '/power-press'),
       children: machines.map((m) => ({ id: `m${m.id}`, label: m.name, href: `/power-press/${m.slug}`, description: m.cardText, image: m.image })),
     },
     {
@@ -38,7 +38,7 @@ export const getMenu = cache(async function getMenu() {
       label: h.productsLabel || 'Products',
       href: '/products',
       kind: 'mega',
-      mega: mega(h.productsMega, '/products', cats.length > 4 ? 'w2' : 'w1'),
+      mega: mega(h.productsMega, '/products'),
       children: cats.map((c) => ({ id: `c${c.id}`, label: c.name, href: `/products/${c.slug}`, description: c.cardText ? shortText(c.cardText) : '', image: c.cardImage })),
     },
     { id: 'press', label: h.pressLabel || 'Insights', href: '/press', kind: 'link', children: [] },

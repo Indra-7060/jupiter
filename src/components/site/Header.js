@@ -1,11 +1,12 @@
 import SmartLink from './SmartLink';
 import Cb from './Cb';
 import ActiveLink from './ActiveLink';
+import MegaRow from './MegaRow';
 
 function MegaMenu({ item }) {
   const m = item.mega || {};
   return (
-    <div className={`mega ${m.width || 'w1'}`}>
+    <div className="mega">
       <div className="mi">
         <div className="mh">
           {m.eyebrow && <small>{m.eyebrow}</small>}
@@ -17,19 +18,19 @@ function MegaMenu({ item }) {
             </SmartLink>
           )}
         </div>
-        <ul className="mg">
+        <MegaRow>
           {item.children.map((c) => (
             <li key={c.id}>
               <SmartLink href={c.href}>
                 <span className="th">{c.image && <img src={c.image} alt="" loading="lazy" referrerPolicy="no-referrer" />}</span>
                 <span className="tx2">
-                  <b>{c.label}</b>
+                  <b title={c.label}>{c.label}</b>
                   {c.description && <small>{c.description}</small>}
                 </span>
               </SmartLink>
             </li>
           ))}
-        </ul>
+        </MegaRow>
       </div>
       {(m.barText || m.barLinkLabel) && (
         <div className="bar">
