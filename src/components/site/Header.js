@@ -1,7 +1,6 @@
 import SmartLink from './SmartLink';
 import Cb from './Cb';
 import ActiveLink from './ActiveLink';
-import MegaRow from './MegaRow';
 
 function MegaMenu({ item }) {
   const m = item.mega || {};
@@ -18,7 +17,7 @@ function MegaMenu({ item }) {
             </SmartLink>
           )}
         </div>
-        <MegaRow>
+        <ul className="mg">
           {item.children.map((c) => (
             <li key={c.id}>
               <SmartLink href={c.href}>
@@ -30,7 +29,7 @@ function MegaMenu({ item }) {
               </SmartLink>
             </li>
           ))}
-        </MegaRow>
+        </ul>
       </div>
       {(m.barText || m.barLinkLabel) && (
         <div className="bar">
