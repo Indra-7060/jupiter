@@ -61,9 +61,3 @@ form.apply .cb{align-self:flex-start;border:0;background:none;padding:0;cursor:p
 .hv-hl{margin-top:1.2rem}
 .hv-hl li{font-size:.62rem;padding:.3rem .7rem}
 @media(max-height:760px){.hv .hv-c p.hv-intro,.hv-hl{display:none}}
-/* page-specific CTA banner: let long button labels breathe */
-.cta-inline .cb .tx,.cta-inline .cb.o .tx,.cta-inline .cb.w .tx{width:max-content!important;min-width:19.5rem;padding:0 1.2rem}
-@media(max-width:900px){.cta-inline .cb .tx,.cta-inline .cb.o .tx{width:max-content!important;min-width:150px;padding:0 10px}}
-/* product / press hero buttons: grow for long labels */
-.vh .cbs .cb .tx,.vh .cbs .cb.o .tx{width:max-content!important;min-width:19.5rem;padding:0 1.2rem}
-@media(max-width:900px){.vh .cbs .cb .tx,.vh .cbs .cb.o .tx{width:max-content!important;min-width:150px;padding:0 10px}}

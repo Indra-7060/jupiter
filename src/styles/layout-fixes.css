@@ -1,0 +1,86 @@
+/* Layout fixes: loaded last. Keeps the original look but stops text clipping and overflow at every width. */
+
+/* 1. Animated buttons: grow with their label instead of a fixed width (original width kept as the minimum). */
+.cb .tx, .cb:not(.sm) .tx, .cb.o .tx, .cb.w .tx { width: auto !important; min-width: 19.5rem; }
+.cb.sm .tx { width: auto !important; min-width: 14.4rem; }
+.cb .tx b { padding: 0 1.6rem; }
+@media (max-width: 900px) {
+  .cb:not(.sm) .tx, .cb.o .tx, .cb.w .tx { min-width: min(60vw, 240px); max-width: calc(100vw - 40px - 56px); }
+  .cb .tx b { white-space: normal !important; line-height: 1.2 !important; padding: 0 12px; text-align: center; }
+  .cbs { max-width: 100%; }
+}
+
+/* 2. Job cards: the Apply button fills the card instead of spilling out; calmer text sizes. */
+.jobs-grid { grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); }
+.job { min-width: 0; }
+.job h3 { font-size: 1.15rem; }
+.job-q { font-size: .92rem; }
+.job-meta span { font-size: .66rem; }
+.job-actions { flex-direction: column; align-items: stretch; gap: .4rem; }
+.job .cb { display: flex; width: 100%; }
+.job .cb .tx { flex: 1 1 auto; min-width: 0 !important; width: auto !important; }
+.job .cb .tx b { padding: 0 .8rem; }
+.job-more { align-self: flex-start; }
+
+/* 3. Home "Two Divisions" cards: share the row by proportion (same 37 : 69 ratio and hover expand), never wider than the page. */
+@media (min-width: 901px) {
+  .dcards { width: 100%; }
+  .dc, .dc.wide, .dcards:hover .dc, .dcards .dc:hover { width: auto !important; min-width: 0; }
+  .dc { flex: 37 1 0; transition: flex-grow .8s cubic-bezier(.2,.7,.2,1), padding .8s cubic-bezier(.2,.7,.2,1), box-shadow .4s; }
+  .dc.wide { flex: 69.25 1 0; }
+  .dcards:hover .dc { flex-grow: 37; }
+  .dcards .dc:hover { flex-grow: 69.25; }
+  .dc .in { min-width: 0; }
+  /* real copy is longer than the original placeholder: let the row grow instead of clipping */
+  .dv .dcards { height: auto; min-height: 30.5rem; align-items: stretch; }
+  .dv .dcards .dc, .dv .dcards:hover .dc, .dv .dcards .dc:hover { padding-top: 3rem; padding-bottom: 3rem; }
+  .dv .dc h3 { line-height: 1.15; }
+}
+
+/* 4. Header menu: links never wrap; tighter spacing on narrower laptops. */
+.nav a { white-space: nowrap; }
+@media (min-width: 901px) and (max-width: 1280px) {
+  .nav { gap: 1.5rem; letter-spacing: .06em; }
+}
+@media (min-width: 901px) and (max-width: 1100px) {
+  .nav { gap: 1.05rem; letter-spacing: .03em; }
+}
+.hdr .logo { flex: 0 0 auto; }
+.hdr .wrap { gap: 1.5rem; }
+
+/* 5. Form sections (contact / send CV) on phones: keep both columns inside the grey card. */
+@media (max-width: 900px) {
+  .fwrap { grid-template-columns: minmax(0, 1fr) !important; }
+  .fwrap > * { min-width: 0; max-width: 100%; margin-left: 0 !important; margin-right: 0 !important; }
+}
+
+/* 6. Long headings on phones (e.g. "CUSTOMISED CLAMPS") wrap instead of running off-screen. */
+@media (max-width: 900px) {
+  .vh .g, .vh .g > div { min-width: 0; }
+  .vh h1, .vh h2, .pg-t, .jobs h2, .apps h2 { overflow-wrap: anywhere; }
+}
+
+/* 7. Header on small laptops: narrower side padding so the quote button stays on screen. */
+@media (min-width: 901px) and (max-width: 1280px) {
+  .hdr .wrap { padding: 0 2.4rem; }
+}
+@media (min-width: 901px) and (max-width: 1280px) {
+  .hdr .logo img { height: 3.9rem; }
+  .hdr .cb.sm .tx { min-width: 0; }
+  .hdr .cb.sm .tx b { padding: 0 1.1rem; letter-spacing: .1em; }
+}
+/* below 1024px there is not enough room for the duplicate quote button (Contact stays in the menu) */
+@media (min-width: 901px) and (max-width: 1023px) {
+  .hdr .cb { display: none !important; }
+}
+
+/* 8. Division cards: keep the heading/tags clear of the product photo in the expanded card. */
+@media (min-width: 901px) {
+  .dv .dc .in { transition: max-width .8s cubic-bezier(.2,.7,.2,1); }
+  .dv .dc.wide .in, .dv .dcards .dc:hover .in { max-width: 58%; }
+  .dv .dcards:hover .dc.wide:not(:hover) .in { max-width: 100%; }
+}
+@media (min-width: 901px) and (max-width: 1366px) {
+  .dv .dc img { height: 16.5rem; }
+  .dv .dc.a img, .dv .dc.b img { right: 3.5rem; top: 50%; margin-top: -8.25rem; }
+}

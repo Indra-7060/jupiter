@@ -6,6 +6,7 @@ import '@/styles/pages.css';
 import '@/styles/mobile.css';
 import '@/styles/careers.css';
 import '@/styles/motion.css';
+import '@/styles/layout-fixes.css';
 
 import Header from '@/components/site/Header';
 import Footer from '@/components/site/Footer';
