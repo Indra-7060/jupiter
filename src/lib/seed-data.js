@@ -56,6 +56,9 @@ export const settings = {
     email: 'marketing@jupiterclamps.com',
     enquiryEmail: 'marketing@jupiterclamps.com',
     hrEmail: 'hr@jupiterclamps.com',
+    whatsapp: '+91 89767 37825',
+    whatsappLabel: 'Chat with us',
+    whatsappMessage: 'Hello Jupiter Industrial Works, I would like to know more about your products.',
   },
   social: { facebook: '#', instagram: '#', linkedin: '#', youtube: '#' },
   footer: {

@@ -441,6 +441,9 @@ export const SETTINGS_SCHEMA = {
       { name: 'email', label: 'Email', type: 'text', half: true },
       { name: 'enquiryEmail', label: 'Send contact-form enquiries to', type: 'text', half: true, help: 'E-mail address that receives a copy of every enquiry' },
       { name: 'hrEmail', label: 'Send job applications to (HR)', type: 'text', half: true, help: 'E-mail address that receives applications with the CV attached' },
+      { name: 'whatsapp', label: 'WhatsApp number', type: 'text', half: true, help: 'Shown as the green chat button at the bottom right of every page. Include the country code, e.g. +91 89767 37825. Leave empty to hide the button.' },
+      { name: 'whatsappLabel', label: 'WhatsApp button text', type: 'text', half: true, help: 'Appears when visitors hover over the button, e.g. "Chat with us"' },
+      { name: 'whatsappMessage', label: 'WhatsApp starting message', type: 'textarea', help: 'Pre-filled in the visitor\'s WhatsApp chat. Optional.' },
     ],
   },
   social: {

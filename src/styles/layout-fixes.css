@@ -261,3 +261,34 @@
 .af-drop-ic svg { width: 18px; height: 18px; }
 .af-drop-t b { font-size: max(13px, 1.05rem); }
 .af-drop-t small, .af-note { font-size: max(11.5px, .9rem); }
+
+/* 13. Floating WhatsApp button: green icon tile that widens into a "Chat with us" pill on hover. */
+.wa-fab {
+  position: fixed; right: 24px; bottom: 24px; z-index: 900;
+  display: inline-flex; align-items: center; height: 58px; padding: 0;
+  background: #25d366; color: #fff !important; text-decoration: none;
+  border-radius: 16px; box-shadow: 0 8px 22px rgba(0, 0, 0, .22), 0 0 0 3px rgba(255, 255, 255, .9);
+  overflow: hidden; white-space: nowrap;
+  transition: border-radius .45s cubic-bezier(.2, .7, .2, 1), box-shadow .3s, transform .3s, background .3s;
+  animation: waIn .6s cubic-bezier(.2, .7, .2, 1) .8s both;
+}
+.wa-ic { flex: none; width: 58px; height: 58px; display: grid; place-items: center; }
+.wa-ic svg { width: 32px; height: 32px; fill: #fff; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+.wa-tx {
+  max-width: 0; opacity: 0; font-family: inherit; font-size: 16px; font-weight: 700; letter-spacing: .01em;
+  transition: max-width .45s cubic-bezier(.2, .7, .2, 1), opacity .3s .05s, padding .45s cubic-bezier(.2, .7, .2, 1);
+}
+@media (hover: hover) {
+  .wa-fab:hover, .wa-fab:focus-visible { border-radius: 999px; background: #20bd5a; box-shadow: 0 12px 28px rgba(0, 0, 0, .26), 0 0 0 3px rgba(255, 255, 255, .9); }
+  .wa-fab:hover .wa-tx, .wa-fab:focus-visible .wa-tx { max-width: 200px; opacity: 1; padding-right: 24px; }
+  .wa-fab:hover .wa-ic svg { transform: scale(.88); }
+}
+.wa-fab:focus-visible { outline: 2px solid #1f4e96; outline-offset: 3px; }
+@keyframes waIn { from { opacity: 0; transform: translateY(16px) scale(.9); } to { opacity: 1; transform: none; } }
+@media (max-width: 700px) {
+  .wa-fab { right: 16px; bottom: 16px; height: 52px; border-radius: 14px; }
+  .wa-ic { width: 52px; height: 52px; }
+  .wa-ic svg { width: 28px; height: 28px; }
+}
+@media print { .wa-fab { display: none; } }
+@media (prefers-reduced-motion: reduce) { .wa-fab, .wa-tx, .wa-ic svg { animation: none; transition: none; } }

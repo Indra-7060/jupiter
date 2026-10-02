@@ -11,6 +11,7 @@ import '@/styles/layout-fixes.css';
 import Header from '@/components/site/Header';
 import Footer from '@/components/site/Footer';
 import SiteEffects from '@/components/site/SiteEffects';
+import WhatsAppButton from '@/components/site/WhatsAppButton';
 import { getMenu, getSettings } from '@/lib/content';
 
 export const dynamic = 'force-dynamic';
@@ -41,6 +42,7 @@ export default async function SiteLayout({ children }) {
         <Header menu={menu} settings={settings} />
         {children}
         <Footer settings={settings} />
+        <WhatsAppButton contact={settings.contact} />
         <SiteEffects />
       </body>
     </html>
