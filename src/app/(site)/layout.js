@@ -30,7 +30,7 @@ export async function generateMetadata() {
 export default async function SiteLayout({ children }) {
   const [settings, menu] = await Promise.all([getSettings(), getMenu()]);
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

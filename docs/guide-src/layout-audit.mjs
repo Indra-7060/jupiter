@@ -14,9 +14,9 @@ for (const w of WIDTHS) {
     await page.goto(BASE + p, { waitUntil: 'networkidle2' });
     await page.addStyleTag({ content: 'nextjs-portal{display:none!important} .rv{opacity:1!important;transform:none!important} *{animation-duration:0s!important;transition:none!important}' });
     await new Promise((r) => setTimeout(r, 250));
-    const issues = await page.evaluate(() => {
+    let issues = await page.evaluate(() => {
       const out = [];
-      const inScroller = (e) => { for (let p = e.parentElement; p && p !== document.body; p = p.parentElement) { const o = getComputedStyle(p).overflowX; if ((o === 'auto' || o === 'scroll') && p.scrollWidth > p.clientWidth) return true; } return false; };
+      const inScroller = (e) => { for (let p = e.parentElement; p && p !== document.body; p = p.parentElement) { const o = getComputedStyle(p).overflowX; if ((o === 'auto' || o === 'scroll' || o === 'hidden' || o === 'clip') && p.scrollWidth > p.clientWidth + 1 && p.getBoundingClientRect().right <= innerWidth + 1) return true; } return false; };
       const label = (e) => (e.className && typeof e.className === 'string' ? '.' + e.className.trim().split(/\s+/).join('.') : e.tagName.toLowerCase());
       const txt = (e) => (e.innerText || '').trim().replace(/\s+/g, ' ').slice(0, 40);
       // 1. page-level horizontal overflow
@@ -48,8 +48,45 @@ for (const w of WIDTHS) {
         if (e.scrollWidth > e.clientWidth + 2 && getComputedStyle(e).overflowX !== 'visible') out.push(`TEXT CLIPPED ${label(e)} "${txt(e)}"`);
         const r = e.getBoundingClientRect(); if (r.right > innerWidth + 1 && !inScroller(e)) out.push(`OFFSCREEN ${label(e)} "${txt(e)}" right=${Math.round(r.right)}`);
       }
+      // 5. header: logo, menu and button must not overlap or leave the screen
+      const hdrParts = ['.hdr .logo', '.hdr .nav', '.hdr .cb', '.hdr .burger'].map((q) => document.querySelector(q)).filter((e) => e && e.offsetParent && getComputedStyle(e).display !== 'none' && getComputedStyle(e).position !== 'fixed');
+      for (let i = 0; i < hdrParts.length; i++) {
+        const a = hdrParts[i].getBoundingClientRect();
+        if (a.right > innerWidth + 1 || a.left < -1) out.push(`HEADER OFFSCREEN ${label(hdrParts[i])}`);
+        for (let j = i + 1; j < hdrParts.length; j++) { const b = hdrParts[j].getBoundingClientRect(); if (a.width && b.width && a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1) out.push(`HEADER OVERLAP ${label(hdrParts[i])} / ${label(hdrParts[j])}`); }
+      }
+      const links = [...document.querySelectorAll('.hdr .nav > a, .hdr .nav .nv > a')].filter((a) => a.offsetParent && innerWidth > 900);
+      const tops = new Set(links.map((a) => Math.round(a.getBoundingClientRect().top)));
+      if (tops.size > 1) out.push(`MENU WRAPS onto ${tops.size} lines`);
       return [...new Set(out)];
     });
+    // 6. dropdowns (desktop): open each, check it fits the screen and the cards are equal
+    if (p === '/' && w > 900) {
+      for (const nv of await page.$$('.hdr .nv')) {
+        const r = await nv.evaluate((n) => {
+          const m = n.querySelector('.mega'); m.style.setProperty('opacity', '1', 'important'); m.style.setProperty('visibility', 'visible', 'important'); m.style.setProperty('transform', 'none', 'important');
+          const mr = m.getBoundingClientRect(); const cards = [...m.querySelectorAll('ul.mg li')].map((l) => l.getBoundingClientRect());
+          const res = { name: n.querySelector('a').textContent.trim(), bottom: Math.round(mr.bottom), sizes: new Set(cards.map((c) => Math.round(c.width) + 'x' + Math.round(c.height))).size, off: cards.filter((c) => c.right > innerWidth || c.left < 0).length, perRow: cards.filter((c) => Math.abs(c.top - cards[0].top) < 2).length };
+          ['opacity', 'visibility', 'transform'].forEach((k) => m.style.removeProperty(k)); return res;
+        });
+        const bad = [];
+        if (r.bottom > 900) bad.push(`taller than the screen (${r.bottom}px)`);
+        if (r.sizes > 1) bad.push('unequal cards');
+        if (r.off) bad.push(`${r.off} cards off-screen`);
+        if (r.perRow !== Math.min(4, r.perRow)) bad.push(`${r.perRow} per row`);
+        if (bad.length) issues.push(`DROPDOWN ${r.name}: ${bad.join(', ')}`);
+      }
+    }
+    // 7. phone menu: open it and check nothing sticks out
+    if (p === '/' && w <= 900) {
+      const r = await page.evaluate(async () => {
+        document.querySelector('.burger')?.click(); await new Promise((x) => setTimeout(x, 300));
+        document.querySelectorAll('.nav .nv > a')[1]?.click(); await new Promise((x) => setTimeout(x, 300));
+        const nav = document.querySelector('.nav'); const bad = [...nav.querySelectorAll('*')].filter((e) => { const b = e.getBoundingClientRect(); return b.width && (b.right > innerWidth + 1 || b.left < -1); }).length;
+        return { bad, overflow: document.documentElement.scrollWidth > innerWidth + 1 };
+      });
+      if (r.bad || r.overflow) issues.push(`PHONE MENU: ${r.bad} items off-screen${r.overflow ? ', page overflows' : ''}`);
+    }
     if (issues.length) { total += issues.length; console.log(`\n[${w}px] ${p}`); issues.forEach((i) => console.log('  - ' + i)); }
   }
 }

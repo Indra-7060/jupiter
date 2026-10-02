@@ -28,8 +28,6 @@
   .dc, .dc.wide, .dcards:hover .dc, .dcards .dc:hover { width: auto !important; min-width: 0; }
   .dc { flex: 37 1 0; transition: flex-grow .8s cubic-bezier(.2,.7,.2,1), padding .8s cubic-bezier(.2,.7,.2,1), box-shadow .4s; }
   .dc.wide { flex: 69.25 1 0; }
-  .dcards:hover .dc { flex-grow: 37; }
-  .dcards .dc:hover { flex-grow: 69.25; }
   .dc .in { min-width: 0; }
   /* real copy is longer than the original placeholder: let the row grow instead of clipping */
   .dv .dcards { height: auto; min-height: 30.5rem; align-items: stretch; }
@@ -78,9 +76,6 @@
 
 /* 8. Division cards: keep the heading/tags clear of the product photo in the expanded card. */
 @media (min-width: 901px) {
-  .dv .dc .in { transition: max-width .8s cubic-bezier(.2,.7,.2,1); }
-  .dv .dc.wide .in, .dv .dcards .dc:hover .in { max-width: 58%; }
-  .dv .dcards:hover .dc.wide:not(:hover) .in { max-width: 100%; }
 }
 @media (min-width: 901px) and (max-width: 1366px) {
   .dv .dc img { height: 16.5rem; }
@@ -282,4 +277,63 @@
   .cb.o .tx b, .cb.w .tx b { height: 50px !important; line-height: 50px !important; }
   .cb:hover .tx span { transform: translateY(-52px); }
   .cb.o:hover .tx span, .cb.w:hover .tx span { transform: translateY(-50px); }
+}
+
+/* 16. Small laptops / tablets in landscape (901–1320px): the base size stops shrinking here,
+       so wide image columns are capped to the space that is really available. */
+@media (min-width: 901px) {
+  .erow { grid-template-columns: minmax(0, 49.1rem) minmax(0, 1fr); }
+  .erow .im, .erow.act .im { max-width: 100%; }
+  .prow { grid-template-columns: minmax(0, 1fr) minmax(0, 53.4rem); }
+  .prow .im, .prow.act .im { max-width: 100%; }
+  .fwrap { grid-template-columns: minmax(0, 36rem) minmax(0, 1fr); }
+  .fwrap > * { min-width: 0; }
+}
+@media (min-width: 901px) and (max-width: 1100px) {
+  .prow { gap: 3rem; }
+  .fwrap { gap: 3rem; padding: 3rem; }
+}
+
+/* 17. Phones: form buttons never wider than the form card. */
+@media (max-width: 900px) {
+  .fwrap .cb, form .cb { display: flex; max-width: 100%; }
+  .fwrap .cb .tx, form .cb .tx { flex: 1 1 auto; min-width: 0 !important; max-width: none; }
+}
+
+/* 18. Home "Two Divisions" hover: smooth and stable.
+       - The text block has a fixed width (based on the row, not the card), so it never re-wraps
+         while a card grows or shrinks: the row keeps the same height and the section below
+         no longer jumps.
+       - Cards only swap when a card is really hovered (not while the pointer is in the gap),
+         which removes the flicker. */
+@media (min-width: 901px) {
+  .dv .dcards { container-type: inline-size; height: auto; min-height: 0; align-items: stretch; }
+  .dv .dcards .dc, .dv .dcards:hover .dc { flex-grow: 37; padding-left: 2.1rem; padding-right: 2.1rem;
+    transition: flex-grow .7s cubic-bezier(.2,.7,.2,1), padding .7s cubic-bezier(.2,.7,.2,1), box-shadow .4s; }
+  .dv .dcards .dc.wide, .dv .dcards:hover:not(:has(.dc:hover)) .dc.wide, .dv .dcards .dc:hover { flex-grow: 69.25; padding-left: 4rem; padding-right: 4rem; }
+  .dv .dcards:has(.dc:hover) .dc.wide:not(:hover) { flex-grow: 37; padding-left: 2.1rem; padding-right: 2.1rem; }
+  .dv .dc .in { flex: none; width: calc((100cqw - 1.25rem) * .3482 - 4.2rem); max-width: none; }
+  .dv .dc p { max-width: none; }
+  .dv .dcards:hover:not(:has(.dc:hover)) .dc.wide img { opacity: 1; transform: none; }
+  .dv .dcards:has(.dc:hover) .dc:not(:hover) img { opacity: 0; transform: translateX(3rem) scale(.94); }
+  .dv .dc img { max-width: calc(100% - (100cqw - 1.25rem) * .3482 - 2rem); object-fit: contain; }
+}
+
+/* 19. About hero: text and photo share the row by proportion, so the photo keeps its size on
+       small laptops instead of shrinking to a thumbnail. */
+@media (min-width: 901px) {
+  .a-hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(3rem, 6vw, 9rem); }
+  .a-hero > * { min-width: 0; }
+  .a-hero img { max-width: 100%; }
+}
+
+/* 20. About "Certified quality": three cards fill the full row (no empty fourth slot). */
+@media (min-width: 901px) {
+  .cq .cgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* 21. Contact form on small laptops: one field per line so placeholders are not cut off. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .fwrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+  .fwrap .g2 { grid-template-columns: 1fr; }
 }
