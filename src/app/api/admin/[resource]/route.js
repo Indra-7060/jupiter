@@ -1,5 +1,5 @@
 import { created, fail, ok, readJson, withAdmin } from '@/lib/api';
-import { Op } from '@/lib/db';
+import { Op, likeOp } from '@/lib/db';
 import { ensureUniqueSlug, getResource, LABEL_FIELD, sanitizePayload, stripSensitive } from '@/lib/resourceModels';
 
 export const GET = withAdmin(async (req, { params }) => {
@@ -19,7 +19,7 @@ export const GET = withAdmin(async (req, { params }) => {
     const textCols = def.columns.map((c) => c.name).filter((n) => Model.rawAttributes[n] && /STRING|TEXT/.test(Model.rawAttributes[n].type.key));
     const label = LABEL_FIELD[name];
     if (label && !textCols.includes(label)) textCols.push(label);
-    if (textCols.length) where[Op.or] = textCols.map((c) => ({ [c]: { [Op.like]: `%${q}%` } }));
+    if (textCols.length) where[Op.or] = textCols.map((c) => ({ [c]: { [likeOp()]: `%${q}%` } }));
   }
   const { rows, count } = await Model.findAndCountAll({ where, order: def.orderBy, limit, offset });
   return ok({ rows: rows.map(stripSensitive), total: count, labelField: LABEL_FIELD[name] });

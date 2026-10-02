@@ -1,5 +1,5 @@
-import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { saveCv } from '@/lib/storage';
 import { db } from '@/lib/db';
 import { created, fail, withPublic } from '@/lib/api';
 import { getSettings } from '@/lib/content';
@@ -8,7 +8,6 @@ import { sendMail, tableEmail } from '@/lib/mailer';
 const recent = new Map();
 const ALLOWED = new Set(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']);
 const MAX = 5 * 1024 * 1024;
-export const CV_DIR = path.join(process.cwd(), 'storage', 'cv');
 
 export const POST = withPublic(async (req) => {
   const form = await req.formData();
@@ -32,12 +31,10 @@ export const POST = withPublic(async (req) => {
     if (file.size > MAX) return fail('The CV must be smaller than 5 MB.');
     buffer = Buffer.from(await file.arrayBuffer());
     cvName = path.basename(file.name || `cv${ext}`).slice(0, 120);
-    cvFile = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}${ext || '.pdf'}`;
     try {
-      await mkdir(CV_DIR, { recursive: true });
-      await writeFile(path.join(CV_DIR, cvFile), buffer);
+      cvFile = await saveCv(buffer, `${Date.now()}-${Math.random().toString(36).slice(2, 7)}${ext || '.pdf'}`, file.type || 'application/octet-stream');
     } catch (err) {
-      console.warn('[applications] could not store CV on disk:', err.message);
+      console.warn('[applications] could not store CV:', err.message);
       cvFile = null; // still e-mailed as an attachment below
     }
   }

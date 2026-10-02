@@ -11,17 +11,26 @@
     "db:create": "node scripts/create-db.mjs",
     "db:sync": "node scripts/sync.mjs",
     "db:seed": "node scripts/seed.mjs",
-    "db:reset": "node scripts/seed.mjs --force"
+    "db:reset": "node scripts/seed.mjs --force",
+    "db:export": "node scripts/export-db.mjs",
+    "db:import": "node scripts/import-db.mjs",
+    "db:sync-content": "node scripts/sync-content.mjs"
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.0",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.0",
     "jose": "^6.2.12",
     "mysql2": "^3.24.5",
     "next": "^16.3.8",
     "nodemailer": "^10.0.13",
+    "pg": "^8.23.1",
+    "pg-hstore": "^2.3.4",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "sequelize": "^6.37.8"
+  },
+  "engines": {
+    "node": ">=20.9"
   }
 }

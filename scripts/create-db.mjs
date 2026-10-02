@@ -4,6 +4,7 @@ import mysql from 'mysql2/promise';
 
 config({ path: '.env.local', quiet: true });
 
+if (process.env.DATABASE_URL) { console.log('DATABASE_URL is set; the hosted database already exists, nothing to create.'); process.exit(0); }
 const name = process.env.DB_NAME || 'jupiter_cms';
 const conn = await mysql.createConnection({
   host: process.env.DB_HOST || '127.0.0.1',

@@ -1,5 +1,4 @@
-import { unlink } from 'node:fs/promises';
-import path from 'node:path';
+import { deleteMedia } from '@/lib/storage';
 import { fail, ok, readJson, withAdmin } from '@/lib/api';
 import { db } from '@/lib/db';
 
@@ -7,8 +6,7 @@ export const DELETE = withAdmin(async (_req, { params }) => {
   const { Media } = db();
   const row = await Media.findByPk(Number(params.id));
   if (!row) return fail('Not found', 404);
-  const file = path.join(process.cwd(), 'public', 'uploads', path.basename(row.filename));
-  await unlink(file).catch(() => {});
+  await deleteMedia(row.url, row.filename);
   await row.destroy();
   return ok({ id: row.id });
 });

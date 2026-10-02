@@ -104,6 +104,40 @@ for `products`, `product-items`, `machines`, `posts`, `locations`, `pages`, `use
 `enquiries`; plus `/api/admin/settings`, `/api/admin/sections[...]`, `/api/admin/upload`,
 `/api/admin/media`, `/api/admin/stats`.
 
+## Deploying to Vercel
+
+Vercel runs the site and the admin, but it cannot host the database and its disk is read-only,
+so two hosted services are needed. The code switches to them automatically through environment variables.
+
+1. **Database** – create a MySQL-compatible database (TiDB Cloud Serverless, Aiven or PlanetScale all
+   have free/low tiers; Neon/Vercel Postgres also work). Copy its connection string.
+2. **Copy your content** from the local database to the hosted one:
+   ```bash
+   npm run db:export -- backup.json
+   DATABASE_URL="mysql://user:pass@host:4000/jupiter_cms" DB_SSL=true npm run db:import -- backup.json
+   ```
+   (For a brand-new empty site use `DATABASE_URL=… DB_SSL=true npm run db:seed` instead.)
+3. **File storage** – in the Vercel project open *Storage → Create → Blob*; Vercel adds `BLOB_READ_WRITE_TOKEN`
+   to the project. Uploads and applicant CVs then go to Blob instead of the disk.
+4. **Import the Git repo** in Vercel (framework: Next.js, no custom build settings) and set these
+   environment variables for Production (and Preview):
+
+   | Variable | Value |
+   |----------|-------|
+   | `DATABASE_URL` | the connection string from step 1 |
+   | `DB_SSL` | `true` |
+   | `DB_POOL_MAX` | `2` |
+   | `JWT_SECRET` | a long random string (`openssl rand -hex 32`) |
+   | `NEXT_PUBLIC_SITE_URL` | `https://your-domain.com` |
+   | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` | a transactional mail account (Brevo, Resend SMTP, Gmail app password…) |
+   | `BLOB_READ_WRITE_TOKEN` | added automatically by the Blob store |
+
+5. Deploy. Sign in at `https://your-domain.com/admin` with the admin user from your database
+   (the local one if you imported, or `ADMIN_EMAIL`/`ADMIN_PASSWORD` if you seeded).
+
+Media uploaded locally before the move lives in `public/uploads` and is deployed with the site; new
+uploads on Vercel go to Blob. Mail without SMTP settings is skipped silently, forms still save.
+
 ## Notes
 
 * Public pages are rendered on demand (`force-dynamic`) so CMS edits are visible instantly.
