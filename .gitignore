@@ -13,3 +13,4 @@ docs/guide-src/jpg
 docs/guide-src/guide.html
 storage/cv/*
 !storage/cv/.gitkeep
+.env.vercel
