@@ -65,6 +65,11 @@ export default function Header({ menu = [], settings = {} }) {
               </ActiveLink>
             )
           )}
+          {header.ctaLabel && (
+            <ActiveLink className="nav-cta-m" href={header.ctaHref || '/contact'}>
+              {header.ctaLabel}
+            </ActiveLink>
+          )}
         </nav>
         {header.ctaLabel && <Cb className="sm" href={header.ctaHref || '/contact'} label={header.ctaLabel} />}
         <button className="burger" aria-label="Menu" type="button">

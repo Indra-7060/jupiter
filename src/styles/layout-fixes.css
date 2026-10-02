@@ -69,9 +69,11 @@
   .hdr .cb.sm .tx { min-width: 0; }
   .hdr .cb.sm .tx b { padding: 0 1.1rem; letter-spacing: .1em; }
 }
-/* below 1024px there is not enough room for the duplicate quote button (Contact stays in the menu) */
-@media (min-width: 901px) and (max-width: 1023px) {
-  .hdr .cb { display: none !important; }
+/* The header button replaces the Contact menu item. On phones it is hidden, so the same link
+   appears as the last item of the slide-out menu instead. */
+.hdr .nav > a.nav-cta-m { display: none; }
+@media (max-width: 900px) {
+  .hdr .nav > a.nav-cta-m { display: block; }
 }
 
 /* 8. Division cards: keep the heading/tags clear of the product photo in the expanded card. */

@@ -44,7 +44,7 @@ export const getMenu = cache(async function getMenu() {
     { id: 'press', label: h.pressLabel || 'Insights', href: '/press', kind: 'link', children: [] },
     ...(h.showCareers === false ? [] : [{ id: 'careers', label: h.careersLabel || 'Careers', href: '/careers', kind: 'link', children: [] }]),
     ...(h.extraLinks || []).filter((l) => l?.label && l?.href).map((l, i) => ({ id: `x${i}`, label: l.label, href: l.href, kind: 'link', children: [] })),
-    { id: 'contact', label: h.contactLabel || 'Contact', href: '/contact', kind: 'link', children: [] },
+    ...(h.showContact ? [{ id: 'contact', label: h.contactLabel || 'Contact', href: '/contact', kind: 'link', children: [] }] : []),
   ];
   return items.filter((it) => it.kind !== 'mega' || it.children.length);
 });

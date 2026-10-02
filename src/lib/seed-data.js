@@ -17,7 +17,7 @@ export const settings = {
     catalogUrl: '#',
   },
   header: {
-    ctaLabel: 'Request a Quote',
+    ctaLabel: 'Get in Touch',
     ctaHref: '/contact',
     homeLabel: 'Home',
     aboutLabel: 'About Us',
@@ -26,6 +26,7 @@ export const settings = {
     pressLabel: 'Insights',
     careersLabel: 'Careers',
     showCareers: true,
+    showContact: false,
     contactLabel: 'Contact',
     extraLinks: [],
     productsMega: {

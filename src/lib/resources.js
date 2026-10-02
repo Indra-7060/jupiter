@@ -417,6 +417,7 @@ export const SETTINGS_SCHEMA = {
       { name: 'pressLabel', label: 'Menu label: Insights', type: 'text', half: true, group: 'Menu labels' },
       { name: 'careersLabel', label: 'Menu label: Careers', type: 'text', half: true, group: 'Menu labels' },
       { name: 'showCareers', label: 'Show Careers in the menu', type: 'boolean', half: true, group: 'Menu labels' },
+      { name: 'showContact', label: 'Show Contact in the menu', type: 'boolean', half: true, group: 'Menu labels', help: 'Off by default: the header button already links to the contact page' },
       { name: 'contactLabel', label: 'Menu label: Contact', type: 'text', half: true, group: 'Menu labels' },
       {
         name: 'extraLinks',
