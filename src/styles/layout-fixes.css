@@ -207,3 +207,57 @@
   .hdr .mega .mg-nav { display: none !important; }
   .hdr .mega ul.mg .tx2 b { white-space: normal; }
 }
+
+/* 10. One button size across the website: every animated button uses the compact
+       size of the header "Request a quote" button. */
+@media (min-width: 901px) {
+  .cb, .cb:not(.sm), .cb.o, .cb.w { height: 3.7rem; }
+  .cb .tx, .cb:not(.sm) .tx, .cb.o .tx, .cb.w .tx { height: 3.7rem; min-width: 14.4rem; }
+  .cb .tx b, .cb.o .tx b, .cb.w .tx b { height: 3.7rem; line-height: 3.7rem; font-size: 1rem; letter-spacing: .13em; font-weight: 600; padding: 0 1.4rem; }
+  .cb.o .tx b, .cb.w .tx b { height: calc(3.7rem - 2px); line-height: calc(3.7rem - 2px); }
+  .cb:hover .tx span { transform: translateY(-3.7rem); }
+  .cb.o:hover .tx span, .cb.w:hover .tx span { transform: translateY(calc(-3.7rem + 2px)); }
+  .cb .ar { width: 3.7rem; height: 3.7rem; }
+  .cb .ar svg { width: 1.6rem; height: 1.6rem; }
+}
+
+/* 11. Careers: three openings per row, compact Apply button beside "View details". */
+.jobs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
+@media (max-width: 1023px) { .jobs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .jobs-grid { grid-template-columns: 1fr; } }
+.jobs .job h3 { font-size: max(15px, 1.35rem); }
+.jobs .job p.job-q { font-size: max(13px, 1.05rem) !important; line-height: 1.6 !important; }
+.jobs .job .job-desc { font-size: max(13px, 1.05rem); }
+.jobs .job .job-meta span { font-size: max(10px, .72rem); }
+.job-actions { flex-direction: row; align-items: center; justify-content: flex-start; gap: .6rem 1.6rem; }
+.job .cb { display: inline-flex; width: auto; }
+.job .cb .tx { flex: none; min-width: 14.4rem !important; }
+.job .cb .tx b { padding: 0 1.4rem; }
+.job-more { align-self: center; }
+@media (max-width: 900px) {
+  .job-actions { flex-direction: column; align-items: stretch; }
+  .job .cb { display: flex; width: 100%; }
+  .job .cb .tx { flex: 1 1 auto; min-width: 0 !important; }
+  .job-more { align-self: flex-start; }
+}
+
+/* 12. Apply dialog and CV form sized to match the compact buttons (scales with the page like the buttons do). */
+@media (min-width: 701px) {
+  .apply-modal { width: min(max(640px, 60rem), 100%); }
+  .apply-head { padding: max(20px, 1.8rem) max(24px, 2.2rem) max(16px, 1.4rem); }
+  .apply-head h3 { font-size: max(20px, 1.8rem); }
+  .apply-head .kick { font-size: max(10px, .85rem); }
+  .apply-meta span { font-size: max(10px, .8rem); padding: .35em .9em; }
+  .apply-body { padding: max(18px, 1.6rem) max(24px, 2.2rem) max(22px, 1.9rem); }
+}
+.apply-form { gap: max(14px, 1.2rem); }
+.af-grid { gap: max(12px, 1rem) max(14px, 1.2rem); }
+.af-field { gap: 5px; }
+.af-field > span, .af-label { font-size: max(12px, 1rem); }
+.apply-form input:not([type=file]), .apply-form textarea { font-size: max(14px, 1.1rem); padding: max(9px, .75rem) max(12px, 1rem); border-radius: 8px; }
+.apply-form textarea { min-height: max(80px, 7rem); }
+.af-drop { padding: max(11px, .95rem) max(14px, 1.2rem); gap: 12px; border-radius: 10px; }
+.af-drop-ic { width: max(34px, 2.9rem); height: max(34px, 2.9rem); border-radius: 8px; }
+.af-drop-ic svg { width: 18px; height: 18px; }
+.af-drop-t b { font-size: max(13px, 1.05rem); }
+.af-drop-t small, .af-note { font-size: max(11.5px, .9rem); }
