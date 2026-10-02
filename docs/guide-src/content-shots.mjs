@@ -1,0 +1,24 @@
+import puppeteer from 'puppeteer-core';
+import { execSync } from 'node:child_process';
+const CHROME = execSync('ls -d ~/.cache/puppeteer/chrome/*/chrome-mac-arm64/*.app/Contents/MacOS/* 2>/dev/null | tail -1').toString().trim();
+const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ['--no-sandbox'] });
+const page = await browser.newPage(); await page.setViewport({ width: 1280, height: 820, deviceScaleFactor: 1.25 });
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const OUT = '../content-screens';
+const go = async (p) => { await page.goto('http://localhost:3000' + p, { waitUntil: 'networkidle2' }); await page.addStyleTag({ content: 'nextjs-portal{display:none!important} .rv{opacity:1!important;transform:none!important}' }); await sleep(1500); };
+const at = async (sel, name, offset = 70) => { const ok = await page.evaluate((s, o) => { const e = document.querySelector(s); if (!e) return false; window.scrollTo(0, e.getBoundingClientRect().top + window.scrollY - o); return true; }, sel, offset); await sleep(900); if (ok) await page.screenshot({ path: `${OUT}/${name}.png` }); console.log(ok ? 'ok' : 'MISSING', name); };
+
+await go('/'); await at('.hv', '01-home-hero', 0); await at('.cr .mf', '02-home-manufacturer-copy', 90); await at('.bs', '03-home-built-to-scale', 60);
+await go('/about'); await at('.a-hero', '04-about-hero', 90); await at('.jr', '05-about-journey', 40); await at('.ind-list', '06-about-industries', 60); await at('.cta-inline', '07-about-cta', 40);
+await go('/products'); await at('.pgw', '08-products-intro', 60);
+await go('/products/worm-drive-clamps'); await at('.vh', '09-worm-drive-hero', 60); await at('.vk', '10-worm-drive-features', 60);
+await go('/products/spring-band-clamps'); await at('.vh', '11-spring-band-hero', 60); await at('.kf', '12-spring-band-standards', 40); await at('.apps', '13-spring-band-applications', 40);
+await go('/products/strap-bands'); await at('.vh', '14-strap-bands-hero', 60); await at('.vk', '15-strap-bands-features', 60); await at('.mo', '16-strap-bands-materials', 40);
+await go('/products/pipe-fitting-clips'); await at('.vh', '17-pipe-clips-hero', 60); await at('.vk', '18-pipe-clips-features', 60);
+await go('/products/t-bolt-clamps'); await at('.vh', '19-t-bolt-hero', 60); await at('.vk', '20-t-bolt-features', 60); await at('.apps', '21-t-bolt-applications', 40);
+await go('/products/customised-clamps'); await at('.vh', '22-customised-clamps-hero', 60); await at('.vk', '23-customised-clamps-benefits', 60);
+await go('/power-press'); await at('.pgw', '24-power-press-intro', 60);
+await go('/press'); await at('.pgw', '25-insights-intro', 60);
+await go('/press/our-founding-story'); await at('.dhero', '26-founding-story', 60);
+await go('/contact'); await at('.fsec', '27-contact-form-heading', 60);
+await browser.close();

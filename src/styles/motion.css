@@ -1,0 +1,48 @@
+/* Light, consistent motion layer. Everything here is disabled for users who prefer reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  /* soft page fade when navigating */
+  @keyframes pageIn { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+  main { animation: pageIn .45s ease both }
+
+  /* hero highlight chips rise one after another */
+  @keyframes chipIn { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
+  .hv-hl li { opacity: 0; animation: chipIn .6s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(.7s + var(--i, 0) * .09s) }
+
+  /* staggered reveal inside grids (works with the existing .rv reveal) */
+  .vkg > .rv:nth-child(2), .vsg > .rv:nth-child(2), .apps-grid > .rv:nth-child(2), .jobs-grid > .rv:nth-child(2), .cgrid > .rv:nth-child(2), .pr3 > .rv:nth-child(2), .indg > .rv:nth-child(2), .ugrid > .rv:nth-child(2), .glg > .rv:nth-child(2) { --d: .08s }
+  .vkg > .rv:nth-child(3), .vsg > .rv:nth-child(3), .apps-grid > .rv:nth-child(3), .jobs-grid > .rv:nth-child(3), .cgrid > .rv:nth-child(3), .pr3 > .rv:nth-child(3), .indg > .rv:nth-child(3), .ugrid > .rv:nth-child(3), .glg > .rv:nth-child(3) { --d: .16s }
+  .vkg > .rv:nth-child(4), .vsg > .rv:nth-child(4), .apps-grid > .rv:nth-child(4), .jobs-grid > .rv:nth-child(4), .cgrid > .rv:nth-child(4), .pr3 > .rv:nth-child(4), .indg > .rv:nth-child(4) { --d: .24s }
+  .vkg > .rv:nth-child(5), .vsg > .rv:nth-child(5), .cgrid > .rv:nth-child(5), .pr3 > .rv:nth-child(5) { --d: .32s }
+  .vkg > .rv:nth-child(6), .cgrid > .rv:nth-child(6), .pr3 > .rv:nth-child(6) { --d: .4s }
+  .vkg > .rv:nth-child(7), .cgrid > .rv:nth-child(7), .pr3 > .rv:nth-child(7) { --d: .48s }
+  .vkg > .rv:nth-child(8), .cgrid > .rv:nth-child(8), .pr3 > .rv:nth-child(8) { --d: .56s }
+
+  /* chips (materials, industries) pop in one by one once their container is revealed (desktop only, like the .rv reveal) */
+  @media (min-width: 901px) {
+    .mats.rv span { opacity: 0; transform: translateY(8px) scale(.96); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1), background .25s }
+    .mats.rv.in span { opacity: 1; transform: none }
+    .mats.rv.in span:nth-child(2) { transition-delay: .06s } .mats.rv.in span:nth-child(3) { transition-delay: .12s } .mats.rv.in span:nth-child(4) { transition-delay: .18s }
+    .mats.rv.in span:nth-child(5) { transition-delay: .24s } .mats.rv.in span:nth-child(6) { transition-delay: .3s } .mats.rv.in span:nth-child(7) { transition-delay: .36s } .mats.rv.in span:nth-child(8) { transition-delay: .42s }
+  }
+
+  /* gentle lifts where cards had none */
+  .vkg > div, .vsg > div, .apps-grid > div, .ucard, .four2 > div, .indg > div { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, opacity .8s cubic-bezier(.2,.7,.2,1) }
+  .vkg > div:hover, .vsg > div:hover, .apps-grid > div:hover, .ucard:hover { transform: translateY(-.35rem); box-shadow: 0 1rem 2.4rem rgba(20,40,80,.12) }
+  .indg > div { overflow: hidden }
+  .indg > div img { transition: transform .6s cubic-bezier(.2,.7,.2,1) }
+  .indg > div:hover img { transform: scale(1.05) }
+  .mats span:hover { transform: translateY(-2px) }
+
+  /* nav links: subtle underline that grows in */
+  .nav > a, .nav .nv > a { position: relative }
+  .nav > a:not(.on)::after, .nav .nv > a:not(.on)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(.2,.7,.2,1); opacity: .7 }
+  .nav > a:not(.on):hover::after, .nav .nv:hover > a:not(.on)::after { transform: scaleX(1) }
+
+  /* forms */
+  .enq input, .enq textarea, .enq select { transition: border-color .2s ease, box-shadow .2s ease, background .2s ease }
+  .enq input:focus, .enq textarea:focus, .enq select:focus { border-color: #1f4e96; box-shadow: 0 0 0 3px rgba(31,78,150,.14); outline: none; background: #fff }
+
+  /* article hero image settles in */
+  @keyframes imgIn { from { opacity: 0; transform: scale(1.03) } to { opacity: 1; transform: none } }
+  .dhero > img, .vh .pic .card img { animation: imgIn .9s cubic-bezier(.2,.7,.2,1) both }
+}

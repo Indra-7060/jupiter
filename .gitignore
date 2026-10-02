@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.env.local
+.env
+public/uploads/*
+!public/uploads/.gitkeep
+.DS_Store
+npm-debug.log*
+docs/guide-src/node_modules
+docs/guide-src/shots
+docs/guide-src/jpg
+docs/guide-src/guide.html
+storage/cv/*
+!storage/cv/.gitkeep

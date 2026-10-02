@@ -1,0 +1,7 @@
+{
+  "name": "jupiter-admin-guide",
+  "private": true,
+  "type": "module",
+  "description": "Generates docs/Jupiter-CMS-Admin-Guide.pdf: node shoot.mjs && node build.mjs (dev server must be running on :3000)",
+  "dependencies": { "puppeteer-core": "^25.12.0" }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "jupiter-industrial-works",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Jupiter Industrial Works website with admin CMS (Next.js + Sequelize + MySQL)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "db:create": "node scripts/create-db.mjs",
+    "db:sync": "node scripts/sync.mjs",
+    "db:seed": "node scripts/seed.mjs",
+    "db:reset": "node scripts/seed.mjs --force"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.0",
+    "jose": "^6.2.12",
+    "mysql2": "^3.24.5",
+    "next": "^16.3.8",
+    "nodemailer": "^10.0.13",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "sequelize": "^6.37.8"
+  }
+}
