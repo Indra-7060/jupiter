@@ -2,7 +2,7 @@
 @media (prefers-reduced-motion: no-preference) {
   /* soft page fade when navigating */
   @keyframes pageIn { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
-  main { animation: pageIn .45s ease both }
+  main { animation: pageIn .45s ease }
 
   /* hero highlight chips rise one after another */
   @keyframes chipIn { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }

@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import ApplicationForm from './ApplicationForm';
+import { useCallback, useState } from 'react';
+import ApplyModal from './ApplyModal';
 import { sanitizeHtml } from '@/lib/util';
 
 export default function JobsList({ jobs, applyLabel, emptyText, successMessage }) {
   const [open, setOpen] = useState(null);
   const [applying, setApplying] = useState(null);
+  const closeModal = useCallback(() => setApplying(null), []);
 
   if (!jobs.length) return <p className="jobs-empty">{emptyText || 'There are no open positions right now.'}</p>;
 
@@ -48,18 +49,7 @@ export default function JobsList({ jobs, applyLabel, emptyText, successMessage }
           </article>
         ))}
       </div>
-      {applying && (
-        <div className="apply-bg" onClick={() => setApplying(null)}>
-          <div className="apply-modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
-            <button className="apply-close" type="button" onClick={() => setApplying(null)} aria-label="Close">
-              ×
-            </button>
-            <span className="kick">Apply for</span>
-            <h3>{applying.title}</h3>
-            <ApplicationForm job={applying} buttonLabel="Send application" successMessage={successMessage} compact />
-          </div>
-        </div>
-      )}
+      {applying && <ApplyModal job={applying} successMessage={successMessage} onClose={closeModal} />}
     </>
   );
 }

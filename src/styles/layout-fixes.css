@@ -84,3 +84,75 @@
   .dv .dc img { height: 16.5rem; }
   .dv .dc.a img, .dv .dc.b img { right: 3.5rem; top: 50%; margin-top: -8.25rem; }
 }
+
+/* 9. Job application dialog (rendered into <body>) */
+@keyframes applyFade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes applyRise { from { opacity: 0; transform: translateY(18px) scale(.985) } to { opacity: 1; transform: none } }
+.apply-bg { position: fixed; inset: 0; z-index: 1000; background: rgba(9, 16, 32, .62); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; padding: 24px; animation: applyFade .2s ease; overscroll-behavior: contain; }
+.apply-modal { position: relative; width: min(860px, 100%); max-height: calc(100vh - 48px); max-height: calc(100dvh - 48px); background: #fff; border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .35); display: flex; flex-direction: column; overflow: hidden; padding: 0; animation: applyRise .28s cubic-bezier(.2,.7,.2,1); }
+.apply-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 26px 30px 20px; border-bottom: 1px solid #e8ebf2;
+  background: linear-gradient(180deg, #f6f8fc, #fff); flex: none; }
+.apply-head .kick { display: block; font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #e79a1c; margin-bottom: 6px; }
+.apply-head h3 { font-size: 24px; line-height: 1.2; font-weight: 800; color: #10182b; margin: 0; }
+.apply-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.apply-meta span { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #2b3c5a; background: #eaf0fa; border-radius: 999px; padding: 5px 10px; }
+.apply-close { flex: none; width: 38px; height: 38px; border-radius: 50%; border: 1px solid #e1e6ef; background: #fff; display: grid; place-items: center; cursor: pointer; color: #333;
+  transition: background .2s, transform .2s; }
+.apply-close:hover { background: #f1f4fa; transform: rotate(90deg); }
+.apply-close svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; }
+.apply-body { overflow-y: auto; padding: 24px 30px 28px; -webkit-overflow-scrolling: touch; }
+
+/* form (used in the dialog and in the "Send us your CV" section) */
+.apply-form { display: flex; flex-direction: column; gap: 18px; }
+.af-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; }
+.af-wide { grid-column: 1 / -1; }
+.af-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.af-field > span, .af-label { font-size: 12.5px; font-weight: 700; color: #2b3c5a; letter-spacing: .01em; }
+.af-field i, .af-label i { color: #c0392b; font-style: normal; }
+.af-label { display: block; margin-bottom: 6px; }
+.apply-form input:not([type=file]), .apply-form textarea { width: 100%; font: inherit; font-size: 15px; color: #111; padding: 12px 14px; border: 1px solid #d6dce7; border-radius: 10px;
+  background: #fafbfe; transition: border-color .2s, box-shadow .2s, background .2s; box-sizing: border-box; }
+.apply-form input:not([type=file]):focus, .apply-form textarea:focus { outline: none; border-color: #1f4e96; background: #fff; box-shadow: 0 0 0 3px rgba(31, 78, 150, .14); }
+.apply-form textarea { min-height: 104px; resize: vertical; }
+.af-drop { position: relative; display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 1.5px dashed #b9c4d8; border-radius: 12px; background: #f7f9fd;
+  cursor: pointer; transition: border-color .2s, background .2s; }
+.af-drop:hover, .af-drop.drag { border-color: #1f4e96; background: #eef3fc; }
+.af-drop.has { border-style: solid; border-color: #1e8e5a; background: #effaf4; }
+.af-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.af-drop-ic { flex: none; width: 42px; height: 42px; border-radius: 10px; background: #1f4e96; display: grid; place-items: center; }
+.af-drop.has .af-drop-ic { background: #1e8e5a; }
+.af-drop-ic svg { width: 20px; height: 20px; stroke: #fff; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.af-drop-t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.af-drop-t b { font-size: 14px; color: #10182b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.af-drop-t small { font-size: 12px; color: #667085; }
+.af-error { background: #fdf0ee; border: 1px solid #f1c5bf; color: #8a2a21; padding: 10px 14px; border-radius: 10px; font-size: 14px; }
+.af-actions { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.af-actions .cb { border: 0; background: none; padding: 0; cursor: pointer; }
+.af-actions .cb[disabled] { opacity: .7; cursor: progress; }
+.af-note { font-size: 12px; color: #667085; }
+.af-done { text-align: center; padding: 30px 10px 10px; }
+.af-done-ic { width: 64px; height: 64px; border-radius: 50%; background: #e7f6ee; display: inline-grid; place-items: center; margin-bottom: 14px; }
+.af-done-ic svg { width: 30px; height: 30px; stroke: #1e8e5a; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.af-done h4 { font-size: 20px; font-weight: 800; margin: 0 0 6px; color: #10182b; }
+.af-done p { color: #555; margin: 0 auto 18px; max-width: 30rem; }
+.af-done-btn { border: 1px solid #1f4e96; background: #1f4e96; color: #fff; font-weight: 700; border-radius: 10px; padding: 10px 26px; cursor: pointer; font: inherit; }
+/* the "Send us your CV" section keeps its grey card, form sits in a white panel */
+.cvsec .apply-form { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 10px 30px rgba(20, 40, 80, .06); }
+
+/* phones: the dialog becomes a full-screen sheet */
+@media (max-width: 700px) {
+  .apply-bg { padding: 0; align-items: stretch; }
+  .apply-modal { width: 100%; max-height: none; height: 100%; height: 100dvh; border-radius: 0; }
+  .apply-head { padding: 18px 18px 14px; }
+  .apply-head h3 { font-size: 20px; }
+  .apply-body { padding: 18px 18px 24px; }
+  .af-grid { grid-template-columns: 1fr; }
+  .cvsec .apply-form { padding: 16px; }
+  .af-actions { flex-direction: column; align-items: stretch; }
+  .af-actions .cb { display: flex; }
+  .af-actions .cb .tx { flex: 1; min-width: 0 !important; }
+}
+/* the application form must not inherit the old contact-form input margins */
+.apply-form input, .apply-form textarea, .apply-form label { margin: 0 !important; }
