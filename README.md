@@ -117,8 +117,10 @@ so two hosted services are needed. The code switches to them automatically throu
    DATABASE_URL="mysql://user:pass@host:4000/jupiter_cms" DB_SSL=true npm run db:import -- backup.json
    ```
    (For a brand-new empty site use `DATABASE_URL=… DB_SSL=true npm run db:seed` instead.)
-3. **File storage** – in the Vercel project open *Storage → Create → Blob*; Vercel adds `BLOB_READ_WRITE_TOKEN`
-   to the project. Uploads and applicant CVs then go to Blob instead of the disk.
+3. **File storage** – in the Vercel project open *Storage → Create → Blob* and connect it to the project.
+   With the default OIDC connection Vercel adds `BLOB_STORE_ID` (a classic `BLOB_READ_WRITE_TOKEN` also works).
+   Private and public stores are both supported: media in a private store is served through `/api/files/uploads/…`,
+   applicant CVs are only readable from the admin.
 4. **Import the Git repo** in Vercel (framework: Next.js, no custom build settings) and set these
    environment variables for Production (and Preview):
 
@@ -130,7 +132,7 @@ so two hosted services are needed. The code switches to them automatically throu
    | `JWT_SECRET` | a long random string (`openssl rand -hex 32`) |
    | `NEXT_PUBLIC_SITE_URL` | `https://your-domain.com` |
    | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` | a transactional mail account (Brevo, Resend SMTP, Gmail app password…) |
-   | `BLOB_READ_WRITE_TOKEN` | added automatically by the Blob store |
+   | `BLOB_STORE_ID` | added automatically when the Blob store is connected |
 
 5. Deploy. Sign in at `https://your-domain.com/admin` with the admin user from your database
    (the local one if you imported, or `ADMIN_EMAIL`/`ADMIN_PASSWORD` if you seeded).
