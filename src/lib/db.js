@@ -1,4 +1,8 @@
 import Sequelize from 'sequelize';
+// Import the drivers explicitly: Sequelize loads them by name at runtime, which Vercel's file tracer
+// cannot see, so without these imports the deployed function has no database driver.
+import mysql2 from 'mysql2';
+import pg from 'pg';
 import { initModels, MODELS_VERSION } from './models/index.js';
 
 const g = globalThis;
@@ -15,6 +19,7 @@ export function getSequelize() {
     const ssl = process.env.DB_SSL === 'true';
     const common = {
       dialect,
+      dialectModule: dialect === 'postgres' ? pg : mysql2,
       logging: process.env.DB_LOGGING === 'true' ? console.log : false,
       // serverless platforms run many small instances: keep the pool tiny there
       pool: { max: Number(process.env.DB_POOL_MAX || (process.env.VERCEL ? 2 : 10)), min: 0, idle: 10000, acquire: 30000 },
