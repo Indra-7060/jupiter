@@ -337,3 +337,7 @@
   .fwrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
   .fwrap .g2 { grid-template-columns: 1fr; }
 }
+
+/* 14. Request-a-Quote page: small orange kicker above the heading, roomier requirement box. */
+.quote-sec .in .kick { display: block; font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: #e79a1c; margin-bottom: .6rem; }
+.quote-sec textarea { min-height: 9rem; }

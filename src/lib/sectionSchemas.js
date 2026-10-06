@@ -281,6 +281,19 @@ export const SECTION_TYPES = {
       { name: 'successMessage', label: 'Success message', type: 'text', half: true },
     ],
   },
+  quote_form: {
+    label: 'Quote request form',
+    description: 'Form where visitors ask for a quotation. Requests are listed under Quote requests in the admin, where they can be answered by e-mail.',
+    fields: [
+      { name: 'kicker', label: 'Kicker (small line above the heading)', type: 'text', half: true },
+      { name: 'heading', label: 'Heading', type: 'text', half: true },
+      { name: 'text', label: 'Intro text', type: 'textarea' },
+      { name: 'bullets', label: 'Bullet points', type: 'tags', help: 'Comma separated' },
+      { name: 'products', label: 'Product options', type: 'tags', help: 'Comma separated (first is default)' },
+      { name: 'buttonLabel', label: 'Button label', type: 'text', half: true },
+      { name: 'successMessage', label: 'Success message', type: 'text', half: true },
+    ],
+  },
   job_openings: {
     label: 'Current openings (careers)',
     description: 'Lists published job openings with an Apply form. Openings are managed under Careers → Job openings.',

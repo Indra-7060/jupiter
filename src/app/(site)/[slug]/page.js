@@ -4,7 +4,7 @@ import { getPage } from '@/lib/content';
 
 export const dynamic = 'force-dynamic';
 
-const RESERVED = new Set(['home', 'about', 'products', 'power-press', 'press', 'contact', 'careers', 'admin', 'api']);
+const RESERVED = new Set(['home', 'about', 'products', 'power-press', 'press', 'contact', 'quote', 'careers', 'admin', 'api']);
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;

@@ -27,7 +27,7 @@ function json(key, defaultValue) {
 }
 
 /** Bump when models are added/changed so a hot-reloaded dev server re-initialises them. */
-export const MODELS_VERSION = 3;
+export const MODELS_VERSION = 4;
 
 export function initModels(sequelize) {
   const AdminUser = sequelize.define(
@@ -228,6 +228,29 @@ export function initModels(sequelize) {
     { tableName: 'enquiries' }
   );
 
+  // Quote requests from the public /quote form; the admin answers them from the CMS and the reply is e-mailed.
+  const QuoteRequest = sequelize.define(
+    'QuoteRequest',
+    {
+      id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+      name: { type: DataTypes.STRING(160), allowNull: false },
+      email: { type: DataTypes.STRING(190), allowNull: false },
+      phone: { type: DataTypes.STRING(60), allowNull: true },
+      company: { type: DataTypes.STRING(190), allowNull: true },
+      location: { type: DataTypes.STRING(160), allowNull: true },
+      product: { type: DataTypes.STRING(160), allowNull: true },
+      specification: { type: DataTypes.STRING(255), allowNull: true },
+      quantity: { type: DataTypes.STRING(80), allowNull: true },
+      message: { type: DataTypes.TEXT, allowNull: true },
+      status: { type: DataTypes.ENUM('new', 'read', 'quoted', 'closed'), allowNull: false, defaultValue: 'new' },
+      reply: { type: DataTypes.TEXT, allowNull: true },
+      repliedAt: { type: DataTypes.DATE, allowNull: true },
+      repliedBy: { type: DataTypes.STRING(190), allowNull: true },
+      ip: { type: DataTypes.STRING(64), allowNull: true },
+    },
+    { tableName: 'quote_requests' }
+  );
+
   const JobOpening = sequelize.define(
     'JobOpening',
     {
@@ -294,6 +317,7 @@ export function initModels(sequelize) {
     Post,
     Location,
     Enquiry,
+    QuoteRequest,
     JobOpening,
     JobApplication,
     Media,

@@ -7,7 +7,7 @@ export const metadata = { title: 'Dashboard' };
 
 export default async function Dashboard() {
   const m = db();
-  const [products, items, machines, posts, enquiries, newEnquiries, media, pages, newApplications, openJobs, recent] = await Promise.all([
+  const [products, items, machines, posts, enquiries, newEnquiries, media, pages, newApplications, openJobs, recent, quotes, newQuotes] = await Promise.all([
     m.ProductCategory.count(),
     m.Product.count(),
     m.Machine.count(),
@@ -19,6 +19,8 @@ export default async function Dashboard() {
     m.JobApplication.count({ where: { status: 'new' } }),
     m.JobOpening.count({ where: { published: true } }),
     m.Enquiry.findAll({ order: [['createdAt', 'DESC']], limit: 6 }).then(plain),
+    m.QuoteRequest.count().catch(() => 0),
+    m.QuoteRequest.count({ where: { status: 'new' } }).catch(() => 0),
   ]);
 
   const stats = [
@@ -28,6 +30,7 @@ export default async function Dashboard() {
     ['Power presses', machines, '/admin/machines'],
     ['Posts', posts, '/admin/posts'],
     ['Enquiries', `${enquiries} (${newEnquiries} new)`, '/admin/enquiries'],
+    ['Quote requests', `${quotes} (${newQuotes} new)`, '/admin/quotes'],
     ['Job openings', openJobs, '/admin/jobs'],
     ['Applications', `${newApplications} new`, '/admin/applications'],
     ['Media files', media, '/admin/media'],

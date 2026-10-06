@@ -54,7 +54,7 @@ for (const cat of seed.productCategories) {
 
 for (const m of seed.machines) {
   const row = await Machine.findOne({ where: { slug: m.slug } });
-  if (row) await row.update({ description: m.description, cardText: m.cardText });
+  if (row) await row.update({ description: m.description, cardText: m.cardText, ...(m.ctaPrimaryHref ? { ctaPrimaryHref: m.ctaPrimaryHref } : {}) });
 }
 
 for (const post of seed.posts) {

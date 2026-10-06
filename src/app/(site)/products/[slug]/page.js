@@ -5,6 +5,7 @@ import Cta from '@/components/site/Cta';
 import Icon from '@/components/site/Icon';
 import SmartLink from '@/components/site/SmartLink';
 import { getProductCategory, getSettings } from '@/lib/content';
+import { quoteHref } from '@/lib/util';
 
 export const dynamic = 'force-dynamic';
 
@@ -66,7 +67,7 @@ export default async function ProductCategoryPage({ params }) {
                   )}
                   {(cat.ctaPrimaryLabel || cat.ctaSecondaryLabel) && (
                     <div className="cbs">
-                      {cat.ctaPrimaryLabel && <Cb href={href(cat.ctaPrimaryHref || '/contact')} label={cat.ctaPrimaryLabel} />}
+                      {cat.ctaPrimaryLabel && <Cb href={href(quoteHref(cat.ctaPrimaryHref || '/contact', cat.name, cat.ctaPrimaryLabel))} label={cat.ctaPrimaryLabel} />}
                       {cat.ctaSecondaryLabel && <Cb href={href(cat.ctaSecondaryHref || '#')} label={cat.ctaSecondaryLabel} variant="o" />}
                     </div>
                   )}

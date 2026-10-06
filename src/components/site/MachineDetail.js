@@ -1,6 +1,6 @@
 import Cb from './Cb';
 import Icon from './Icon';
-import { splitList } from '@/lib/util';
+import { quoteHref, splitList } from '@/lib/util';
 
 /** Full power-press page content: hero, gallery, features and specification table. */
 export default function MachineDetail({ m }) {
@@ -19,7 +19,7 @@ export default function MachineDetail({ m }) {
                 {m.description && <p>{m.description}</p>}
                 {(m.ctaPrimaryLabel || m.ctaSecondaryLabel) && (
                   <div className="cbs">
-                    {m.ctaPrimaryLabel && <Cb href={m.ctaPrimaryHref || '/contact'} label={m.ctaPrimaryLabel} />}
+                    {m.ctaPrimaryLabel && <Cb href={quoteHref(m.ctaPrimaryHref || '/contact', m.name, m.ctaPrimaryLabel)} label={m.ctaPrimaryLabel} />}
                     {m.ctaSecondaryLabel && <Cb href={m.ctaSecondaryHref || '#specs'} label={m.ctaSecondaryLabel} variant="o" />}
                   </div>
                 )}

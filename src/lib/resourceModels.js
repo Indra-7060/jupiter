@@ -12,6 +12,7 @@ const MODEL_BY_RESOURCE = {
   pages: 'Page',
   users: 'AdminUser',
   enquiries: 'Enquiry',
+  quotes: 'QuoteRequest',
   jobs: 'JobOpening',
   applications: 'JobApplication',
 };
@@ -25,6 +26,7 @@ export const LABEL_FIELD = {
   pages: 'title',
   users: 'name',
   enquiries: 'name',
+  quotes: 'name',
   jobs: 'title',
   applications: 'name',
 };

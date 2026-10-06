@@ -8,6 +8,7 @@ const NAV = [
   { grp: 'Overview' },
   { href: '/admin', label: 'Dashboard', exact: true },
   { href: '/admin/enquiries', label: 'Enquiries', badgeKey: 'newEnquiries' },
+  { href: '/admin/quotes', label: 'Quote requests', badgeKey: 'newQuotes' },
   { grp: 'Content' },
   { href: '/admin/pages', label: 'Pages & sections' },
   { href: '/admin/posts', label: 'Press / Insights' },

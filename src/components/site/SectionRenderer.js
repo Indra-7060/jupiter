@@ -16,6 +16,7 @@ import MachineFeature from './sections/MachineFeature';
 import PressList from './sections/PressList';
 import ContactLocations from './sections/ContactLocations';
 import ContactForm from './sections/ContactForm';
+import QuoteForm from './sections/QuoteForm';
 import RichText from './sections/RichText';
 import JobOpenings from './sections/JobOpenings';
 import CvForm from './sections/CvForm';
@@ -41,6 +42,7 @@ const MAP = {
   press_list: PressList,
   contact_locations: ContactLocations,
   contact_form: ContactForm,
+  quote_form: QuoteForm,
   rich_text: RichText,
   job_openings: JobOpenings,
   cv_form: CvForm,

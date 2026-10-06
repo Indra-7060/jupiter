@@ -90,6 +90,29 @@ export const settings = {
   },
 };
 
+/** Request-a-Quote page (system page, slug /quote). The form posts to /api/quotes → Admin → Quote requests. */
+export const quotePage = {
+  slug: 'quote',
+  title: 'Request a Quote',
+  metaTitle: 'Request a Quote',
+  metaDescription: 'Tell us the clamp or power press you need and our sales team will send you a quotation.',
+  isSystem: true,
+  sections: [
+    {
+      type: 'quote_form',
+      data: {
+        kicker: 'Request a Quote',
+        heading: 'Tell us what you need. We will quote it.',
+        text: 'Share the clamp type, size range, material and quantity — or the power press capacity you are planning — and our sales engineers will come back with pricing and lead time.',
+        bullets: ['Quotation within one working day', 'Custom and non-standard designs welcome', 'Samples and drawings reviewed by our engineering team'],
+        products: ['V-Band Clamps', 'T-Bolt Clamps', 'Worm Drive Clamps', 'Spring Band Clamps', 'Strap Bands', 'Pipe Fitting Clips', 'Muffler Clamps', 'Customised Clamps', 'Power Press', 'Other'],
+        buttonLabel: 'Request Quote',
+        successMessage: 'Thank you — your quote request has been received. Our sales team will send you a quotation shortly.',
+      },
+    },
+  ],
+};
+
 export const pages = [
   {
     slug: 'home',
@@ -109,7 +132,7 @@ export const pages = [
           poster: '/video/hero-poster.jpg',
           buttons: [
             { label: 'Explore Products', href: '/products', style: '' },
-            { label: 'Request a Quote', href: '/contact', style: 'w' },
+            { label: 'Request a Quote', href: '/quote', style: 'w' },
           ],
         },
       },
@@ -355,6 +378,7 @@ export const pages = [
       },
     ],
   },
+  quotePage,
 ];
 
 export const careersPage = {
@@ -466,7 +490,7 @@ export const productCategories = [
     badgeBig: '360°',
     badgeText: 'equal pressure|around the joint',
     ctaPrimaryLabel: 'Request a Quote',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'Download Catalog',
     ctaSecondaryHref: '#',
     featuresKicker: 'What sets it apart',
@@ -520,7 +544,7 @@ export const productCategories = [
     badgeBig: '360°',
     badgeText: 'even pressure|around the hose',
     ctaPrimaryLabel: 'Request a Quote',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'Download Catalog',
     ctaSecondaryHref: '#',
     featuresKicker: 'Key benefits',
@@ -554,7 +578,7 @@ export const productCategories = [
     badgeBig: '200°C',
     badgeText: 'rated from|-40°C',
     ctaPrimaryLabel: 'Request a Quote',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'Download Catalog',
     ctaSecondaryHref: '#',
     featuresKicker: 'Key benefits',
@@ -591,7 +615,7 @@ export const productCategories = [
     badgeBig: 'JR',
     badgeText: 'type codes|material · design · width',
     ctaPrimaryLabel: 'Request a Quote',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'Download Catalog',
     ctaSecondaryHref: '#',
     featuresKicker: 'Customization & benefits',
@@ -631,7 +655,7 @@ export const productCategories = [
     badgeBig: '20+',
     badgeText: 'design types|JP 01 – JP 719',
     ctaPrimaryLabel: 'Request a Quote',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'Download Catalog',
     ctaSecondaryHref: '#',
     featuresKicker: 'Customization & benefits',
@@ -669,7 +693,7 @@ export const productCategories = [
     badgeBig: '31.75',
     badgeText: 'mm max|band width',
     ctaPrimaryLabel: 'Request a Quote',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'Download Catalog',
     ctaSecondaryHref: '#',
     featuresKicker: 'Key benefits',
@@ -735,7 +759,7 @@ export const productCategories = [
     badgeBig: '1:1',
     badgeText: 'built to your|specifications',
     ctaPrimaryLabel: 'Get in Touch with Our Engineering Team',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     featuresKicker: 'Why customise',
     featuresHeading: 'Key Benefits of Jupiter Customization',
     features: [
@@ -788,7 +812,7 @@ export const machines = [
     badgeBig: '5–100',
     badgeText: 'Ton capacity|range',
     ctaPrimaryLabel: 'Contact Us',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'View Specifications',
     ctaSecondaryHref: '#specs',
     galleryHeading: 'Machine Gallery',
@@ -816,7 +840,7 @@ export const machines = [
     badgeBig: '2×',
     badgeText: 'operations in|one machine',
     ctaPrimaryLabel: 'Contact Us',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'View Specifications',
     ctaSecondaryHref: '#specs',
     galleryHeading: 'Machine Gallery',
@@ -840,7 +864,7 @@ export const machines = [
     badgeBig: '5–30',
     badgeText: 'Ton capacity|range',
     ctaPrimaryLabel: 'Contact Us',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     ctaSecondaryLabel: 'View Specifications',
     ctaSecondaryHref: '#specs',
     galleryHeading: 'Machine Gallery',
@@ -864,7 +888,7 @@ export const machines = [
     badgeBig: '10–100',
     badgeText: 'Ton capacity|range',
     ctaPrimaryLabel: 'Contact Us',
-    ctaPrimaryHref: '/contact',
+    ctaPrimaryHref: '/quote',
     galleryHeading: 'Machine Gallery',
     gallery: [{ label: 'Hydraulic Power Press', image: '/images/press-machine.jpg', href: '' }],
     featuresKicker: 'Built to last',

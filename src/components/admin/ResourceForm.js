@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import SchemaForm from './SchemaForm';
+import QuoteReply from './QuoteReply';
 import { api } from '@/lib/adminClient';
 import { useToast } from './Toast';
 
@@ -77,6 +78,7 @@ export default function ResourceForm({ name, def, id }) {
     }[name] || null);
 
   return (
+    <>
     <form onSubmit={save}>
       <div className="ad-top">
         <div>
@@ -139,5 +141,15 @@ export default function ResourceForm({ name, def, id }) {
         </div>
       </div>
     </form>
+    {name === 'quotes' && value && !isNew && (
+      <QuoteReply
+        quote={value}
+        onReplied={(q) => {
+          setValue(q);
+          router.refresh();
+        }}
+      />
+    )}
+    </>
   );
 }

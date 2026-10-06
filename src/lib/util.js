@@ -1,3 +1,16 @@
+/**
+ * Resolve the link of a call-to-action button.
+ * - Buttons labelled "… Quote …" that still point at /contact (content saved before the quote page existed)
+ *   go to /quote instead, so the Request-a-Quote flow works even before `db:sync-content` has run.
+ * - A "/quote" link gets ?product=… so the quote form pre-selects what the visitor was looking at.
+ */
+export function quoteHref(href, product, label) {
+  let h = href;
+  if ((h === '/contact' || h === '/contact/') && /quot/i.test(label || '')) h = '/quote';
+  if (!h || !h.startsWith('/quote') || h.includes('?') || !product) return h;
+  return `/quote?product=${encodeURIComponent(product)}`;
+}
+
 export function slugify(input = '') {
   return String(input)
     .toLowerCase()

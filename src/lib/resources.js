@@ -370,6 +370,44 @@ export const RESOURCES = {
       { name: 'message', label: 'Message', type: 'textarea', readOnly: true },
     ],
   },
+
+  quotes: {
+    label: 'Quote requests',
+    singular: 'Quote request',
+    orderBy: [['createdAt', 'DESC']],
+    readOnly: true,
+    columns: [
+      { name: 'name', label: 'Name' },
+      { name: 'company', label: 'Company' },
+      { name: 'product', label: 'Product' },
+      { name: 'quantity', label: 'Quantity' },
+      { name: 'status', label: 'Status' },
+      { name: 'createdAt', label: 'Received', type: 'date' },
+    ],
+    fields: [
+      { name: 'name', label: 'Name', type: 'text', readOnly: true, half: true },
+      { name: 'email', label: 'Email', type: 'text', readOnly: true, half: true },
+      { name: 'phone', label: 'Phone', type: 'text', readOnly: true, half: true },
+      { name: 'company', label: 'Company', type: 'text', readOnly: true, half: true },
+      { name: 'location', label: 'Location', type: 'text', readOnly: true, half: true },
+      { name: 'product', label: 'Product', type: 'text', readOnly: true, half: true },
+      { name: 'specification', label: 'Size / specification', type: 'text', readOnly: true, half: true },
+      { name: 'quantity', label: 'Quantity', type: 'text', readOnly: true, half: true },
+      {
+        name: 'status',
+        label: 'Status',
+        type: 'select',
+        half: true,
+        options: [
+          { value: 'new', label: 'New' },
+          { value: 'read', label: 'Read' },
+          { value: 'quoted', label: 'Quoted (replied)' },
+          { value: 'closed', label: 'Closed' },
+        ],
+      },
+      { name: 'message', label: 'Requirement', type: 'textarea', readOnly: true },
+    ],
+  },
 };
 
 export const RESOURCE_NAMES = Object.keys(RESOURCES);
@@ -441,6 +479,7 @@ export const SETTINGS_SCHEMA = {
       { name: 'phone', label: 'Phone', type: 'text', half: true },
       { name: 'email', label: 'Email', type: 'text', half: true },
       { name: 'enquiryEmail', label: 'Send contact-form enquiries to', type: 'text', half: true, help: 'E-mail address that receives a copy of every enquiry' },
+      { name: 'quoteEmail', label: 'Send quote requests to', type: 'text', half: true, help: 'E-mail address that receives every Request-a-Quote submission (falls back to the enquiry address)' },
       { name: 'hrEmail', label: 'Send job applications to (HR)', type: 'text', half: true, help: 'E-mail address that receives applications with the CV attached' },
       { name: 'whatsapp', label: 'WhatsApp number', type: 'text', half: true, help: 'Shown as the green chat button at the bottom right of every page. Include the country code, e.g. +91 89767 37825. Leave empty to hide the button.' },
       { name: 'whatsappLabel', label: 'WhatsApp button text', type: 'text', half: true, help: 'Appears when visitors hover over the button, e.g. "Chat with us"' },

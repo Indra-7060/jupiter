@@ -1,7 +1,9 @@
 import SmartLink from './SmartLink';
+import { quoteHref } from '@/lib/util';
 
 /** The animated "cb" call-to-action button used across the site. */
 export default function Cb({ href = '#', label, variant = '', className = '', as = 'a', ...rest }) {
+  href = quoteHref(href, undefined, label); // "Request a Quote" buttons always reach the quote page
   const cls = ['cb', variant, className].filter(Boolean).join(' ');
   const inner = (
     <>
