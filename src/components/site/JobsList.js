@@ -14,8 +14,10 @@ export default function JobsList({ jobs, applyLabel, emptyText, successMessage }
   return (
     <>
       <div className="jobs-grid">
+        {/* className stays constant: the scroll-reveal observer adds "in" to .rv elements, and a React
+            className update would overwrite it and hide the card again. Open state goes in a data attribute. */}
         {jobs.map((j) => (
-          <article key={j.id} className={`job rv${open === j.id ? ' open' : ''}`}>
+          <article key={j.id} className="job rv" data-open={open === j.id ? 'true' : undefined}>
             <h3>{j.title}</h3>
             <div className="job-meta">
               {j.department && <span>{j.department}</span>}
@@ -41,7 +43,7 @@ export default function JobsList({ jobs, applyLabel, emptyText, successMessage }
                 </span>
               </button>
               {j.description && (
-                <button className="job-more" type="button" onClick={() => setOpen(open === j.id ? null : j.id)}>
+                <button className="job-more" type="button" aria-expanded={open === j.id} onClick={() => setOpen(open === j.id ? null : j.id)}>
                   {open === j.id ? 'Hide details ↑' : 'View details ↓'}
                 </button>
               )}
