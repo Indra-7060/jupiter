@@ -1,10 +1,12 @@
 import { created, fail, ok, readJson, withAdmin } from '@/lib/api';
 import { Op, likeOp } from '@/lib/db';
 import { ensureUniqueSlug, getResource, LABEL_FIELD, sanitizePayload, stripSensitive } from '@/lib/resourceModels';
+import { ensureQuoteTable } from '@/lib/quotes';
 
 export const GET = withAdmin(async (req, { params }) => {
   const resource = getResource(params.resource);
   if (!resource) return fail('Unknown resource', 404);
+  if (params.resource === 'quotes') await ensureQuoteTable();
   const { Model, def, name } = resource;
   const url = new URL(req.url);
   const q = url.searchParams.get('q')?.trim();

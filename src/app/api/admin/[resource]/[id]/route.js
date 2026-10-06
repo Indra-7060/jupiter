@@ -1,10 +1,12 @@
 import { fail, ok, readJson, withAdmin } from '@/lib/api';
 import { db } from '@/lib/db';
 import { ensureUniqueSlug, getResource, sanitizePayload, stripSensitive } from '@/lib/resourceModels';
+import { ensureQuoteTable } from '@/lib/quotes';
 
 export const GET = withAdmin(async (_req, { params }) => {
   const resource = getResource(params.resource);
   if (!resource) return fail('Unknown resource', 404);
+  if (params.resource === 'quotes') await ensureQuoteTable();
   const row = await resource.Model.findByPk(Number(params.id));
   if (!row) return fail('Not found', 404);
   return ok(stripSensitive(row));

@@ -2,21 +2,9 @@ import { db } from '@/lib/db';
 import { created, fail, readJson, withPublic } from '@/lib/api';
 import { getSettings } from '@/lib/content';
 import { sendMail, tableEmail } from '@/lib/mailer';
+import { ensureQuoteTable } from '@/lib/quotes';
 
 const recent = new Map();
-
-// The quote_requests table is created on first use so the form keeps working on a database
-// that has not been migrated yet (e.g. straight after a deploy, before `npm run db:sync`).
-let tableReady = null;
-function ensureTable(Model) {
-  if (!tableReady) {
-    tableReady = Model.sync().catch((err) => {
-      tableReady = null;
-      throw err;
-    });
-  }
-  return tableReady;
-}
 
 export const POST = withPublic(async (req) => {
   const body = await readJson(req);
@@ -35,7 +23,7 @@ export const POST = withPublic(async (req) => {
   recent.set(ip, Date.now());
 
   const { QuoteRequest } = db();
-  await ensureTable(QuoteRequest);
+  await ensureQuoteTable();
   const row = await QuoteRequest.create({
     name: name.slice(0, 160),
     email: email.slice(0, 190),
