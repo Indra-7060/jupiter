@@ -197,7 +197,7 @@
 }
 
 /* 11. Careers: three openings per row, compact Apply button beside "View details". */
-.jobs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
+.jobs-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; align-items: start; } /* start: only the card whose details are open grows, not its row neighbours */
 @media (max-width: 1023px) { .jobs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 700px) { .jobs-grid { grid-template-columns: 1fr; } }
 .jobs .job h3 { font-size: max(15px, 1.35rem); }
