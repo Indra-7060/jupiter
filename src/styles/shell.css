@@ -90,7 +90,7 @@ section.cta3 h2{font-size:var(--fs-h2)!important;font-weight:800!important;line-
 .cb.o .ar{background:transparent;border:1px solid #1f4e96;box-sizing:border-box}
 .cb.o .ar svg{stroke:#1f4e96}
 .cb.o:hover .tx,.cb.o:hover .ar{background:#fff}
-.cta3 .gh2{position:absolute;left:0;right:0;bottom:-.2rem;font-size:11rem;font-weight:800;line-height:1;color:#e2e2e5;text-transform:uppercase;pointer-events:none;-webkit-mask-image:linear-gradient(#000 25%,transparent 96%);mask-image:linear-gradient(#000 25%,transparent 96%)}
+.cta3 .gh2{position:absolute;left:0;right:0;bottom:-.2rem;white-space:nowrap;font-size:min(11rem,8vw);font-weight:800;line-height:1;color:#e2e2e5;text-transform:uppercase;pointer-events:none;-webkit-mask-image:linear-gradient(#000 25%,transparent 96%);mask-image:linear-gradient(#000 25%,transparent 96%)}
 @media(max-width:900px){.cta3{height:auto;padding:60px 20px 130px}section.cta3 h2{font-size:34px!important}.cta3 em{font-size:16px}.cb{height:52px}.cb .tx,.cb.o .tx{width:190px;height:52px}.cb .tx b{height:52px;line-height:52px;font-size:13px}.cb .ar{width:52px;height:52px}.cta3 .gh2{font-size:18vw}}
 
 .hdr .cb{margin-left:0}

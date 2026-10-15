@@ -163,8 +163,8 @@ export default async function ProductCategoryPage({ params }) {
 
         {cat.featureTags?.length > 0 && (
           <section className="kf">
-            <div className="pg-ghost">Features</div>
-            <h2>{cat.featuresHeading || 'Key Features'}</h2>
+            <div className="pg-ghost">Standards</div>
+            <h2>{cat.featureTagsHeading || 'Standards & Highlights'}</h2>
             <div className="circ">
               {cat.featureTags.map((t, i) => (
                 <div key={i}>
@@ -200,6 +200,11 @@ export default async function ProductCategoryPage({ params }) {
               <div className="apps-grid">
                 {cat.applications.map((a, i) => (
                   <div key={i} className="rv">
+                    {a.image && (
+                      <div className="ap-im">
+                        <img src={a.image} alt={a.title} loading="lazy" referrerPolicy="no-referrer" />
+                      </div>
+                    )}
                     <h4>{a.title}</h4>
                     <p>{a.text}</p>
                   </div>

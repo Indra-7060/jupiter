@@ -22,7 +22,7 @@ export const settings = {
     homeLabel: 'Home',
     aboutLabel: 'About Us',
     powerPressLabel: 'Power Press',
-    productsLabel: 'Products',
+    productsLabel: 'Clamps',
     pressLabel: 'Insights',
     careersLabel: 'Careers',
     showCareers: true,
@@ -30,7 +30,7 @@ export const settings = {
     contactLabel: 'Contact',
     extraLinks: [],
     productsMega: {
-      eyebrow: 'Products',
+      eyebrow: 'Clamps',
       title: 'Clamps Product Range',
       text: 'Precision-engineered clamps for automotive, heavy-duty and industrial assemblies. Standard and fully custom designs.',
       ctaLabel: 'View all products →',
@@ -127,7 +127,7 @@ export const pages = [
           subtitle: 'Innovation Born from Experience.',
           tagline: 'Engineered for industries that demand performance without compromise.',
           text: 'Since 1959, Jupiter Industrial Works has been designing and manufacturing high-precision Clamps and Power Press Machines. From our pioneering plant in Shrivardhan to advanced units in Rabale and Pune, we bring six decades of engineering reliability and innovation to global OEMs.',
-          highlights: ['60+ years of hands-on manufacturing expertise', 'Certified IATF 16949:2016 quality systems', '3 manufacturing facilities – Shrivardhan | Rabale | Pune', 'Fully automated production and in-house testing', 'Trusted by OEMs globally, expanding into the European market'],
+          highlights: ['60+ years of hands-on manufacturing expertise', 'Certified IATF 16949:2016 quality systems', '4 manufacturing facilities – Shrivardhan | Rabale | Pune | Kagal', 'Fully automated production and in-house testing', 'In-house testing facility', 'Trusted by OEMs globally, expanding into the European market'],
           video: '/video/hero.mp4',
           poster: '/video/hero-poster.jpg',
           buttons: [
@@ -322,7 +322,7 @@ export const pages = [
         data: {
           heading: 'Looking for custom clamping|or press solutions',
           em: 'tailored to your operational specifications?',
-          ghost: 'Custom',
+          ghost: 'Customization',
           buttons: [
             { label: 'Explore Product Catalog', href: '/products', style: '' },
             { label: 'Contact Our Engineering Team', href: '/contact', style: 'o' },
@@ -342,7 +342,6 @@ export const pages = [
     title: 'Power Press Range',
     isSystem: true,
     sections: [
-      { type: 'machine_feature', data: { machineId: null } },
       { type: 'machines_grid', data: { title: 'Power Press Range', ghost: 'Power Press', text: 'The Jupiter Duplex Power Press revolutionized pressing efficiency with twin operation and compact design. Our range includes single crank machines and Duplex Power Press machines in 20–100 Ton variants for high-load precision forming. Every press is developed under stringent quality control and proven across decades of fault-free operation.', linkLabel: 'View machine →' } },
     ],
   },
@@ -509,6 +508,12 @@ export const productCategories = [
       { title: 'Wedging Action', text: 'The angled V-segments press against the flange tapers, generating a wedging force.' },
       { title: 'Axial Lock', text: 'This wedging action converts into a strong axial force that draws the two flange faces tightly together for a vibration-resistant seal.' },
     ],
+    featureTags: ['Simpler and faster to mount than bolted flanges', 'Mostly sheet-metal construction, so lighter assemblies', 'Easy to latch and unlatch for inspection, cleaning and replacement', 'Stainless steel resists hot water, salt water and hazardous chemicals'],
+    applications: [
+      { title: 'Piping, Tubing & Lines', text: 'Joining piping, tubing, and gas or liquid lines.', image: '/images/ind-3.jpg' },
+      { title: 'Process Equipment', text: 'Closures, separators, regulators, filters and containers.', image: '/images/ind-4.jpg' },
+      { title: 'Engines & Turbo', text: 'Turbo chargers and engine joints.', image: '/images/ind-1.jpg' },
+    ],
     designsKicker: 'Our range',
     designsHeading: 'V-Band Clamp Designs',
     products: [
@@ -556,10 +561,23 @@ export const productCategories = [
       { icon: 'sliders', title: 'Versatile & Durable', text: 'Stainless steel construction offers maximum corrosion resistance, high band flexibility, and wide clamping ranges to reduce inventory needs.' },
       { icon: 'drop', title: 'Eco-Friendly', text: 'Designed with minimal or omitted zinc plating to comply with environmental protection standards.' },
     ],
-    products: [
-      { name: 'Worm Drive Clamp with 12 mm wide band', image: `${EXT}/worm/images/worm_drive_clamp_with_12_mm_wide_band.png`, order: 0 },
-      { name: 'Tension Spring Clamp with spiral band', image: `${EXT}/worm/images/tension_spring_clamp_with_spiral_band.png`, order: 1 },
+    featureTags: ['Meets IS 4762, BS 5315/1976, DIN 3017 and SAE J 1508', 'Four components: captive screw, housing, band and underlap', 'Punched band slots resist slipping under high torque', 'Spot-welded housing, stronger than riveting'],
+    applications: [
+      { title: 'Automotive & Engines', text: 'Automobile, Heavy Engines and Tractors.', image: '/images/ind-2.jpg' },
+      { title: 'Marine & Railways', text: 'Marine and Railway applications.', image: '/images/ind-3.jpg' },
+      { title: 'Industrial', text: 'Irrigation, Pneumatic Connections, Electrical Cable Joints and Chemical.', image: '/images/home-factory.jpg' },
     ],
+    products: [
+      ['Worm Drive Clamp with 12.7 mm wide band', 'worm_drive_clamp_with_12_mm_wide_band.png'],
+      ['Worm Drive Clamp with 15.8 mm wide band & added Underlap', 'worm_drive_clamp_with_15_8_mm_wide_band_and_added_underlap.png'],
+      ['Constant Torque Worm Drive Clamp with Bellivile Washers', 'constant_torque_worm_drive_clamp_with_bellivile_washers.png'],
+      ['Snap Action Worm Drive Clamp', 'snap_action_worm_drive_clamp.png'],
+      ['Worm Drive Thumb Screw Clamp', 'worm_drive_thumb-_screw_clamp.png'],
+      ['High Torque Worm Drive Clamp', 'high_torque_worm-_drive_clamp.png'],
+      ['Constant High Torque Worm Drive Clamp with Bellivile Washers', 'constant_high_torque_worm_drive_clamp_with_bellivile_washers.png'],
+      ['Tension Spring Clamp with Spiral Band', 'tension_spring_clamp_with_spiral_band.png'],
+      ['Constant Pressure Worm Drive Clamp (Patented Design)', 'cosntant_pressure_worm_drive_clamp_patented_design.png'],
+    ].map(([name, file], i) => ({ name, image: `${EXT}/worm/images/${file}`, order: i })),
   },
   {
     slug: 'spring-band-clamps',
@@ -592,14 +610,15 @@ export const productCategories = [
     ],
     featureTags: ['Complies with SAE J1508', 'DIN 3021 Type A', 'Eco-friendly zinc-flake coating', 'One-piece sheet-metal construction'],
     applications: [
-      { title: 'Automotive', text: 'Fuel lines, air/water pipes, steering systems, coolant loops, and engine construction.' },
-      { title: 'Industrial & HVAC', text: 'Heat pumps, commercial AC units, compressors, and LPG installations.' },
-      { title: 'Specialized Machinery', text: 'Agricultural, construction, printing, floor-cleaning equipment, and commercial dishwashers.' },
+      { title: 'Automotive', text: 'Fuel lines, air/water pipes, steering systems, coolant loops, and engine construction.', image: '/images/ind-1.jpg' },
+      { title: 'Industrial & HVAC', text: 'Heat pumps, commercial AC units, compressors, and LPG installations.', image: '/images/ind-4.jpg' },
+      { title: 'Specialized Machinery', text: 'Agricultural, construction, printing, floor-cleaning equipment, and commercial dishwashers.', image: '/images/cert-global.jpg' },
     ],
     products: [{ name: 'Tension Spring Clamp with spiral band', image: `${EXT}/worm/images/tension_spring_clamp_with_spiral_band.png`, order: 0 }],
   },
   {
     slug: 'strap-bands',
+    materials: [],
     name: 'Strap Bands',
     order: 3,
     layout: 'hero',
@@ -628,10 +647,9 @@ export const productCategories = [
       { icon: 'drop', title: 'Corrosion Resistance', text: 'High-grade stainless steel options ensure longevity against environmental exposure and road chemicals.' },
       { icon: 'bolt', title: 'Vibration Resistant', text: 'Maintains structural stability and firm clamping force in high-vibration automotive and heavy equipment applications.' },
     ],
-    materials: ['AISI 304', 'AISI 441', 'AISI 439', 'Mild Steel (MS)', 'Custom alloys on request'],
     applications: [
-      { title: 'Automotive & Commercial Vehicles', text: 'Fuel tanks, Urea tanks, and EATS (Exhaust Aftertreatment System) tanks.' },
-      { title: 'Industrial & Electrical', text: 'Battery mounting brackets, air filter housing, and large process piping.' },
+      { title: 'Automotive & Commercial Vehicles', text: 'Fuel tanks, Urea tanks, and EATS (Exhaust Aftertreatment System) tanks.', image: '/images/ind-2.jpg' },
+      { title: 'Industrial & Electrical', text: 'Battery mounting brackets, air filter housing, and large process piping.', image: '/images/home-ind-2.jpg' },
     ],
     products: [
       { name: 'Standard Strap Band', description: 'Plain stainless steel strap bands in a range of widths and thicknesses.', image: '/images/strap-band.jpg', order: 0 },
@@ -640,6 +658,7 @@ export const productCategories = [
   },
   {
     slug: 'pipe-fitting-clips',
+    materials: [],
     name: 'Pipe Fitting Clips',
     order: 4,
     layout: 'hero',
@@ -650,7 +669,7 @@ export const productCategories = [
     subtitle: 'Heavy-duty support and mounting for pipes, tubes and conduits',
     description:
       'Jupiter Pipe Fitting Clamps are engineered for heavy-duty support and mounting, offering a quick, secure way to clamp piping, tubing, and electrical conduits to structural surfaces. Supplied in an open position for fast installation, they wrap around the pipe and are tightened via screw fixings with optional reinforced washers.',
-    chips: ['Over 20 design types', 'Protective sleeve options', '172–400 h salt-spray tested'],
+    chips: ['Over 20 design types', 'Protective sleeve options', '172–400 h salt-spray tested', 'Manufactured to DIN 3016'],
     heroImage: `${EXT}/pipe/images/pipe-clip-with-sleeve.png`,
     badgeBig: '20+',
     badgeText: 'design types|JP 01 – JP 719',
@@ -663,21 +682,27 @@ export const productCategories = [
     features: [
       { icon: 'layers', title: 'Versatile Material Choices', text: 'Available in Mild Steel (M.S.), AISI 202 Stainless Steel, AISI 304 Stainless Steel, and AISI 316 Stainless Steel.' },
       { icon: 'sliders', title: 'Wide Range of Designs', text: 'Offers over 20 distinct design types (Types JP 01 through JP 21, JP 22, JP 23, and JP 719) to match specific mounting profiles.' },
-      { icon: 'shield', title: 'Protective Sleeve Options', text: 'Available with Heat Shrinkable PVC, Neoprene Rubber, Nitrile Rubber, EPDM Rubber, or Vinyl Plastisol Coating.' },
+      { icon: 'shield', title: 'Protective Sleeve Options', text: 'Available with Heat Shrinkable PVC, Neoprene Rubber, Nitrile Rubber, EPDM Rubber, Viton, or Vinyl Plastisol Coating.' },
       { icon: 'target', title: 'Smart Part Coding', text: 'Decoded via standard type codes covering Material, Design Type, and Sleeve Construction (e.g., Pipe vs. Channel, coated vs. uncoated).' },
       { icon: 'bolt', title: 'Fast & Simple Assembly', text: 'Delivered in an open state so technicians can fit them directly over existing piping runs without disassembling lines.' },
       { icon: 'wrench', title: 'High Torque & Load Capacity', text: 'Optional spot-welded washer reinforcement at the screw mounting point provides superior clamping strength.' },
       { icon: 'drop', title: 'Long-Lasting Corrosion Resistance', text: 'Electroplated with eco-friendly trivalent chemicals, enduring 172 to 400 hours of salt-spray testing.' },
       { icon: 'shieldCheck', title: 'Surface Protection', text: 'Protective rubber and plastisol sleeves shield delicate pipes from edge wear and vibration friction, extending overall system life.' },
     ],
-    materials: ['Mild Steel (M.S.)', 'AISI 202', 'AISI 304', 'AISI 316'],
+    applications: [
+      { title: 'Hoses, Pipes & Cables', text: 'Retaining clips for hoses, pipes and cables.', image: '/images/ind-3.jpg' },
+      { title: 'Cable Harnesses & Protection', text: 'Securing cable harnesses and providing cable protection.', image: '/images/expertise-1.jpg' },
+    ],
     products: [
       { name: 'Pipe Clip with Sleeve', description: 'Rubber or plastisol-sleeved clip isolates vibration and protects pipe finishes.', image: `${EXT}/pipe/images/pipe-clip-with-sleeve.png`, order: 0 },
-      { name: 'Pipe Clip without Sleeve', description: 'Plain metal clip for rigid tube and conduit routing.', image: `${EXT}/pipe/images/pipe-clip-with-sleeve.png`, order: 1 },
+      { name: 'Pipe Clip with Sleeve (O type)', image: `${EXT}/pipe/images/pipe-clip-with-sleeve-o-type.png`, order: 1 },
+      { name: 'Pipe Clip without Sleeve', description: 'Plain metal clip for rigid tube and conduit routing.', image: `${EXT}/pipe/images/pipe-clip-without-sleeve.png`, order: 2 },
+      { name: 'Special parts as per drawing', image: `${EXT}/pipe/images/special-parts-as-per-drg.png`, order: 3 },
     ],
   },
   {
     slug: 't-bolt-clamps',
+    materials: [],
     name: 'T-Bolt Clamps',
     order: 5,
     layout: 'hero',
@@ -706,11 +731,10 @@ export const productCategories = [
       { icon: 'sliders', title: 'Flexible Fitting', text: 'Automatically adjusts to minor variations in circular mating diameters better than rigid, thick-walled mild steel clamps.' },
     ],
     featureTags: ['Built to SAE J 1508', 'Full stainless or hybrid (AISI 301, 304, 316)', 'Part code J - [Design] - [Material] - [Band Width]', 'Band widths 16 mm to 31.75 mm'],
-    materials: ['AISI 301', 'AISI 304', 'AISI 316', 'Hybrid stainless / zinc-plated T-bolt'],
     applications: [
-      { title: 'Heavy Engines', text: 'Intake, coolant, and exhaust connections on heavy-duty commercial vehicles and engines.' },
-      { title: 'Air Cleaners & Metallic Inserts', text: 'Securing split tubular sheet iron over metallic intake tubes.' },
-      { title: 'Custom Assemblies', text: 'Tailored options for quick-opening latches, constant torque systems, and custom O.D. sizes.' },
+      { title: 'Heavy Engines', text: 'Intake, coolant, and exhaust connections on heavy-duty commercial vehicles and engines.', image: '/images/ind-2.jpg' },
+      { title: 'Air Cleaners & Metallic Inserts', text: 'Securing split tubular sheet iron over metallic intake tubes.', image: '/images/ind-4.jpg' },
+      { title: 'Custom Assemblies', text: 'Tailored options for quick-opening latches, constant torque systems, and custom O.D. sizes.', image: '/images/expertise-3.jpg' },
     ],
     industriesHeading: 'Industries & Application',
     industries: clampIndustries,

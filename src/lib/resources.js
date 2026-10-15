@@ -85,6 +85,7 @@ export const RESOURCES = {
         fields: [
           { name: 'title', label: 'Title', type: 'text' },
           { name: 'text', label: 'Text', type: 'textarea' },
+          { name: 'image', label: 'Image (shown with a "Stock Image" watermark)', type: 'image' },
         ],
         group: 'Common applications',
       },
@@ -148,15 +149,16 @@ export const RESOURCES = {
       { name: 'ctaPrimaryHref', label: 'Primary link', type: 'text', half: true, group: 'Hero' },
       { name: 'ctaSecondaryLabel', label: 'Secondary button', type: 'text', half: true, group: 'Hero' },
       { name: 'ctaSecondaryHref', label: 'Secondary link', type: 'text', half: true, group: 'Hero' },
-      { name: 'galleryHeading', label: 'Heading', type: 'text', group: 'Gallery' },
+      { name: 'galleryHeading', label: 'Heading', type: 'text', group: 'Gallery', help: 'Each gallery item can be an image or a video.' },
       {
         name: 'gallery',
         label: 'Gallery items',
         type: 'list',
         fields: [
           { name: 'label', label: 'Label', type: 'text', half: true },
-          { name: 'href', label: 'Open link (optional)', type: 'text', half: true },
-          { name: 'image', label: 'Image', type: 'image' },
+          { name: 'href', label: 'Open link (optional, images only)', type: 'text', half: true },
+          { name: 'image', label: 'Image (or video poster)', type: 'image' },
+          { name: 'video', label: 'Video (optional)', type: 'video', help: 'MP4 or WebM. When a video is set this item plays as a video and the image above is used as its cover. Leave empty for a normal image.' },
         ],
         group: 'Gallery',
       },

@@ -22,8 +22,12 @@ export default function Crafting({ data }) {
             ))}
           </div>
         )}
-        {data.ghostA && <div className="gw a rv l">{data.ghostA}</div>}
-        {data.ghostB && <div className="gw b rv r">{data.ghostB}</div>}
+        {(data.ghostA || data.ghostB) && (
+          <div className="gwrow">
+            {data.ghostA && <div className="gw a">{data.ghostA}</div>}
+            {data.ghostB && <div className="gw b">{data.ghostB}</div>}
+          </div>
+        )}
         {(data.mfTitle || data.mfText) && (
           <div className="mf">
             <div className="rv">

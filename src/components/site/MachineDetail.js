@@ -48,12 +48,23 @@ export default function MachineDetail({ m }) {
               <span className="kick">Gallery</span>
               <h2>{m.galleryHeading || 'Machine Gallery'}</h2>
               <div className="glg">
-                {m.gallery.map((g, i) => (
-                  <a key={i} className="rv" href={g.href || '#'} target={g.href ? '_blank' : undefined} rel={g.href ? 'noopener noreferrer' : undefined}>
-                    <div className="im">{g.image && <img src={g.image} alt={g.label || m.name} loading="lazy" referrerPolicy="no-referrer" />}</div>
-                    <b>{g.label}</b>
-                  </a>
-                ))}
+                {m.gallery.map((g, i) =>
+                  g.video ? (
+                    <div key={i} className="rv vc">
+                      <div className="im">
+                        <video controls playsInline preload="metadata" poster={g.image || undefined} aria-label={g.label || m.name}>
+                          <source src={g.video} type={/\.webm($|\?)/i.test(g.video) ? 'video/webm' : 'video/mp4'} />
+                        </video>
+                      </div>
+                      {g.label && <b>{g.label}</b>}
+                    </div>
+                  ) : (
+                    <a key={i} className="rv" href={g.href || '#'} target={g.href ? '_blank' : undefined} rel={g.href ? 'noopener noreferrer' : undefined}>
+                      <div className="im">{g.image && <img src={g.image} alt={g.label || m.name} loading="lazy" referrerPolicy="no-referrer" />}</div>
+                      <b>{g.label}</b>
+                    </a>
+                  )
+                )}
               </div>
             </div>
           </section>

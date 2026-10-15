@@ -49,7 +49,24 @@ for (const cat of seed.productCategories) {
     const patch = {};
     for (const [k, v] of Object.entries(rest)) { if (k === 'slug' || IMAGE_KEYS.has(k)) continue; patch[k] = k === 'industries' ? mergeText({ industries: c.get('industries') }, { industries: v }).industries : v; }
     await c.update(patch);
+    // add sub-products that exist in the seed but not yet in the database (matched by image, then name); never deletes
+    const have = await Product.findAll({ where: { categoryId: c.id } });
+    for (const [i, pr] of products.entries()) {
+      const byImage = pr.image && have.find((h) => h.get('image') === pr.image);
+      const hit = byImage || have.find((h) => h.get('name') === pr.name);
+      if (!hit) { const row = await Product.create({ ...pr, order: pr.order ?? i, categoryId: c.id }); have.push(row); console.log('product added', cat.slug, pr.name); }
+      else if (byImage && hit.get('name') !== pr.name) await hit.update({ name: pr.name });
+    }
   }
+}
+
+// sections retired on purpose (client asked for them to be removed)
+const RETIRED = { 'power-press': ['machine_feature'] };
+for (const [slug, types] of Object.entries(RETIRED)) {
+  const p = await Page.findOne({ where: { slug } });
+  if (!p) continue;
+  const n = await Section.destroy({ where: { pageId: p.id, type: types } });
+  if (n) console.log('sections removed', slug, types.join(','), n);
 }
 
 for (const m of seed.machines) {

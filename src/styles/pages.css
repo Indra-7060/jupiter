@@ -1,7 +1,7 @@
 /* Inner pages: Press, Press detail, Clamps, Power Press, Contact */
 .pgw{padding-top:7rem;padding-bottom:6rem;position:relative}
 .pg-t{text-align:center;font-weight:800;text-transform:uppercase;margin:0 0 4rem!important}
-.pg-ghost{position:absolute;left:0;right:0;text-align:center;font-size:11rem;font-weight:800;line-height:1;color:#e9e9ee;opacity:.6;text-transform:uppercase;pointer-events:none;white-space:nowrap;-webkit-mask-image:linear-gradient(#000 20%,transparent 95%);mask-image:linear-gradient(#000 20%,transparent 95%);z-index:0}
+.pg-ghost{position:absolute;left:0;right:0;text-align:center;font-size:11rem;font-weight:800;line-height:1;color:#dfe2ea;opacity:.9;text-transform:uppercase;pointer-events:none;white-space:nowrap;-webkit-mask-image:linear-gradient(#000 20%,transparent 95%);mask-image:linear-gradient(#000 20%,transparent 95%);z-index:0}
 .pg-ghost+*{position:relative;z-index:1}
 /* press list */
 .prow{display:grid;grid-template-columns:1fr 53.4rem;gap:6rem;padding:2.6rem 0;border-bottom:1px solid #e3e5ea;text-decoration:none;color:inherit}
@@ -165,7 +165,7 @@ a.ccard:hover{transform:translateY(-.5rem);box-shadow:0 1.2rem 2.6rem rgba(20,40
 @media(max-width:900px){.vw .two,.vkg,.vsg{grid-template-columns:1fr}}
 /* v-band content redesign (brand blue / orange, no black) */
 .vw{padding:5rem 0 4.5rem}
-.vw .kick,.vk .kick,.vs .kick{display:block;color:#e79a1c;font-size:1.15rem!important;font-weight:800;text-transform:uppercase;margin-bottom:1rem}
+.vw .kick,.vk .kick,.vs .kick{display:block;color:#e79a1c;font-size:1.7rem!important;font-weight:800;text-transform:uppercase;margin-bottom:1rem}
 .vk{background:#f3f4f6;padding:6rem 0 6.5rem;position:relative;overflow:hidden;text-align:center}
 .vk .pg-ghost{top:2.2rem;color:#e3e6ec;opacity:.9}
 .vk h2{position:relative;z-index:1;margin:0 0 4rem}
@@ -189,7 +189,7 @@ a.ccard:hover{transform:translateY(-.5rem);box-shadow:0 1.2rem 2.6rem rgba(20,40
 .vsg h4,.vsg p{transition:color .3s}
 .vsg p{color:#e3ebfa}
 .vl{padding:6rem 0 7rem;position:relative}
-.vl .kick{display:block;text-align:center;color:#e79a1c;font-size:1.15rem!important;font-weight:800;text-transform:uppercase;margin-bottom:1rem}
+.vl .kick{display:block;text-align:center;color:#e79a1c;font-size:1.7rem!important;font-weight:800;text-transform:uppercase;margin-bottom:1rem}
 .vl h2{text-align:center;text-transform:uppercase;font-weight:800;margin:0}
 .vl .cgrid{margin-top:3.4rem}
 /* v-band listing redesign: white cards, cut-out look (no grey studio backdrop) */
@@ -209,7 +209,7 @@ a.ccard:hover{transform:translateY(-.5rem);box-shadow:0 1.2rem 2.6rem rgba(20,40
 .vh{position:relative;overflow:hidden;padding:6rem 0 6rem}
 .vh .pg-ghost{top:1.5rem;text-align:left;padding-left:var(--gut,6.5rem);font-size:12rem;opacity:.5}
 .vh .g{display:grid;grid-template-columns:1fr 42rem;gap:6rem;align-items:center;position:relative;z-index:1}
-.vh .kick{display:block;color:#e79a1c;font-size:1.15rem!important;font-weight:800;text-transform:uppercase;margin-bottom:1.2rem}
+.vh .kick{display:block;color:#e79a1c;font-size:1.7rem!important;font-weight:800;text-transform:uppercase;margin-bottom:1.2rem}
 .vh h1{font-weight:800;text-transform:uppercase;margin:0 0 1.2rem!important}
 .vh h2{font-size:2.3rem!important;font-weight:700;color:#1f4e96;margin:0 0 1.6rem;text-transform:none}
 .vh p{max-width:58rem;margin:0 0 2.4rem}
@@ -248,7 +248,7 @@ a.ccard:hover{transform:translateY(-.5rem);box-shadow:0 1.2rem 2.6rem rgba(20,40
 .vh.pp .pic img{object-fit:contain;padding:2.2rem;mix-blend-mode:multiply}
 .vh.pp .badge b{font-size:2.2rem}
 .gl{padding:5rem 0 6rem;text-align:center}
-.gl .kick,.gt2 .kick{display:block;color:#e79a1c;font-size:1.15rem!important;font-weight:800;text-transform:uppercase;margin-bottom:1rem}
+.gl .kick,.gt2 .kick{display:block;color:#e79a1c;font-size:1.7rem!important;font-weight:800;text-transform:uppercase;margin-bottom:1rem}
 .gl h2{text-transform:uppercase;font-weight:800;margin:0 0 3.4rem}
 .glg{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .glg a{display:block;background:#fff;border:1px solid #e6e9f0;border-radius:1.8rem;overflow:hidden;text-decoration:none;color:inherit;transition:transform .35s,box-shadow .35s,border-color .35s}
@@ -267,3 +267,5 @@ a.ccard:hover{transform:translateY(-.5rem);box-shadow:0 1.2rem 2.6rem rgba(20,40
 .gt2 li small{display:block;color:#ffc766;font-size:1rem!important;text-transform:uppercase;margin-bottom:.2rem}
 .gt2 li a{color:#fff}
 @media(max-width:900px){.glg,.gt2 .box{grid-template-columns:1fr}}
+
+@media(max-width:900px){html body .vh .kick,html body .vw .kick,html body .vk .kick,html body .vs .kick,html body .gl .kick,html body .gt2 .kick{font-size:12px!important}}

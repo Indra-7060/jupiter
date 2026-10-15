@@ -12,7 +12,6 @@ export default function BuiltToScale({ data }) {
           <div className="rl">
             {slides.map((s, i) => (
               <div key={i} className="sd">
-                <div className="gh">{s.ghost}</div>
                 <div className="t">
                   <h3>{s.title}</h3>
                   <p>{s.text}</p>

@@ -134,9 +134,9 @@ export default function SiteEffects() {
 
     // ghost text: rise + scroll drift
     (() => {
-      const els = $$('.cta3 .gh2,.jf .gt');
+      const els = $$('.gw,.pg-ghost,.bs .sd .gh,.cta3 .gh2,.cta2 .gh2,.jf .gt');
       if (!els.length) return;
-      els.forEach((el, k) => (el._dir = k % 2 ? 1 : -1));
+      els.forEach((el, k) => (el._dir = el.classList.contains('b') ? 1 : el.classList.contains('a') ? -1 : k % 2 ? 1 : -1));
       if (reduced) {
         els.forEach((e) => e.classList.add('in'));
         return;
@@ -159,7 +159,7 @@ export default function SiteEffects() {
           const r = e.getBoundingClientRect();
           if (r.bottom < 0 || r.top > vh) return;
           const p = (vh - r.top) / (vh + r.height);
-          e.style.transform = 'translateX(' + ((p - 0.5) * e._dir * 7).toFixed(2) + 'vw)';
+          e.style.transform = 'translateX(' + ((p - 0.5) * e._dir * 12).toFixed(2) + 'vw)';
         });
       };
       on(window, 'scroll', () => {
