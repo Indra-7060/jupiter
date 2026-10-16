@@ -14,7 +14,24 @@ export default function BuiltToScale({ data }) {
               <div key={i} className="sd">
                 <div className="t">
                   <h3>{s.title}</h3>
-                  <p>{s.text}</p>
+                  {s.text && <p>{s.text}</p>}
+                  {s.sub && <h4 className="sub">{s.sub}</h4>}
+                  {s.more &&
+                    String(s.more)
+                      .split(/\n\s*\n/)
+                      .filter((x) => x.trim())
+                      .map((para, k) => (
+                        <p key={k} className="more">
+                          {para.trim()}
+                        </p>
+                      ))}
+                  {s.points?.length > 0 && (
+                    <ul className="pts">
+                      {s.points.map((pt, k) => (
+                        <li key={k}>{pt}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
                 <div className="pic">{s.image && <img className={s.contain ? 'ct' : undefined} src={s.image} alt={s.title} />}</div>
               </div>

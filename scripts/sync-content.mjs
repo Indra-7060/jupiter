@@ -61,7 +61,7 @@ for (const cat of seed.productCategories) {
 }
 
 // sections retired on purpose (client asked for them to be removed)
-const RETIRED = { 'power-press': ['machine_feature'] };
+const RETIRED = {};
 for (const [slug, types] of Object.entries(RETIRED)) {
   const p = await Page.findOne({ where: { slug } });
   if (!p) continue;

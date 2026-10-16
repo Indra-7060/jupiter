@@ -145,6 +145,9 @@ export const SECTION_TYPES = {
         fields: [
           { name: 'title', label: 'Title', type: 'text' },
           { name: 'text', label: 'Text', type: 'textarea' },
+          { name: 'sub', label: 'Sub-heading (optional)', type: 'text', help: 'Shown under the text in orange. Leave empty to hide.' },
+          { name: 'more', label: 'Extra paragraphs / information (optional)', type: 'textarea', help: 'Blank line = new paragraph. Leave empty to hide.' },
+          { name: 'points', label: 'Bullet points (optional)', type: 'tags', help: 'Comma separated. Leave empty to hide.' },
           { name: 'image', label: 'Image', type: 'image', half: true },
           { name: 'contain', label: 'Fit image inside (contain)', type: 'boolean', half: true },
         ],
@@ -234,9 +237,11 @@ export const SECTION_TYPES = {
   },
   machine_feature: {
     label: 'Featured power press (full page)',
-    description: 'Shows one power press in full: hero, gallery, features and specification table.',
+    description: 'Shows one power press: gallery and features, plus (optionally) the intro and the specification table.',
     fields: [
       { name: 'machineId', label: 'Power press', type: 'relation', resource: 'machines', allowEmpty: true, help: 'Leave empty to show the first press in your Order' },
+      { name: 'showHero', label: 'Show the press intro (name, photo, buttons)', type: 'boolean', half: true },
+      { name: 'showSpecs', label: 'Show the Technical Specifications table', type: 'boolean', half: true },
     ],
   },
   machines_grid: {

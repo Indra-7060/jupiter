@@ -3,12 +3,13 @@ import Icon from './Icon';
 import { quoteHref, splitList } from '@/lib/util';
 
 /** Full power-press page content: hero, gallery, features and specification table. */
-export default function MachineDetail({ m }) {
+export default function MachineDetail({ m, hideHero = false, hideSpecs = false }) {
   const badgeLines = String(m.badgeText || '').split('|');
   const columns = m.specColumns || [];
   const rows = m.specRows || [];
   return (
     <>
+        {!hideHero && (
         <section className="vh pp">
           <div className="pg-ghost">{m.kicker || 'Power Press'}</div>
           <div className="wrap">
@@ -41,6 +42,7 @@ export default function MachineDetail({ m }) {
             </div>
           </div>
         </section>
+        )}
 
         {m.gallery?.length > 0 && (
           <section className="gl">
@@ -91,7 +93,7 @@ export default function MachineDetail({ m }) {
           </section>
         )}
 
-        {rows.length > 0 && (
+        {!hideSpecs && rows.length > 0 && (
           <section className="specw" id="specs">
             <div className="wrap">
               <h2>{m.specsHeading || 'Technical Specifications'}</h2>

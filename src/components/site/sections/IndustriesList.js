@@ -8,9 +8,11 @@ export default function IndustriesList({ data }) {
         {data.text && <p className="lead">{data.text}</p>}
         {items.length > 0 && (
           <div className="mats rv">
-            {items.map((m, i) => (
-              <span key={i}>{m}</span>
-            ))}
+            {items.map((m, i) => [
+              <span key={i}>{m}</span>,
+              // line break after the 4th chip: first row 4, second row the rest (desktop)
+              i === 3 && items.length > 4 ? <i key="br" className="ln" /> : null,
+            ])}
           </div>
         )}
         {data.footer && <p className="foot">{data.footer}</p>}

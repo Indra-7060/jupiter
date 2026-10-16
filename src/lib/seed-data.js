@@ -343,6 +343,7 @@ export const pages = [
     isSystem: true,
     sections: [
       { type: 'machines_grid', data: { title: 'Power Press Range', ghost: 'Power Press', text: 'The Jupiter Duplex Power Press revolutionized pressing efficiency with twin operation and compact design. Our range includes single crank machines and Duplex Power Press machines in 20–100 Ton variants for high-load precision forming. Every press is developed under stringent quality control and proven across decades of fault-free operation.', linkLabel: 'View machine →' } },
+      { type: 'machine_feature', data: { machineId: '' } },
     ],
   },
   {
@@ -618,7 +619,7 @@ export const productCategories = [
   },
   {
     slug: 'strap-bands',
-    materials: [],
+    materials: ['AISI 304', 'AISI 441', 'AISI 439', 'Mild Steel (MS)', 'Custom alloys on request'],
     name: 'Strap Bands',
     order: 3,
     layout: 'hero',
@@ -658,7 +659,7 @@ export const productCategories = [
   },
   {
     slug: 'pipe-fitting-clips',
-    materials: [],
+    materials: ['Mild Steel (M.S.)', 'AISI 202', 'AISI 304', 'AISI 316'],
     name: 'Pipe Fitting Clips',
     order: 4,
     layout: 'hero',
@@ -702,7 +703,7 @@ export const productCategories = [
   },
   {
     slug: 't-bolt-clamps',
-    materials: [],
+    materials: ['AISI 301', 'AISI 304', 'AISI 316', 'Hybrid stainless / zinc-plated T-bolt'],
     name: 'T-Bolt Clamps',
     order: 5,
     layout: 'hero',
