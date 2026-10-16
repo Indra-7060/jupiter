@@ -162,16 +162,21 @@ export default async function ProductCategoryPage({ params }) {
         )}
 
         {cat.featureTags?.length > 0 && (
-          <section className="kf">
+          <section className="vk">
             <div className="pg-ghost">Standards</div>
-            <h2>{cat.featureTagsHeading || 'Standards & Highlights'}</h2>
-            <div className="circ">
-              {cat.featureTags.map((t, i) => (
-                <div key={i}>
-                  <Icon name="check" />
-                  <span>{t}</span>
-                </div>
-              ))}
+            <div className="wrap">
+              <span className="kick">{cat.featureTagsKicker || 'At a glance'}</span>
+              <h2>{cat.featureTagsHeading || 'Standards & Highlights'}</h2>
+              <div className="vkg vkt">
+                {cat.featureTags.map((t, i) => (
+                  <div key={i} className="rv">
+                    <span className="ic">
+                      <Icon name="check" />
+                    </span>
+                    <h4>{t}</h4>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         )}

@@ -62,6 +62,7 @@ export const RESOURCES = {
       { name: 'featuresHeading', label: 'Heading', type: 'text', half: true, group: 'Features (icon cards)' },
       { name: 'features', label: 'Features', type: 'list', fields: featureItemFields, group: 'Features (icon cards)' },
       { name: 'featureTags', label: 'Key feature badges (check list)', type: 'tags', help: 'Comma separated', group: 'Features (icon cards)' },
+      { name: 'featureTagsKicker', label: 'Small orange line above that heading', type: 'text', help: 'Default: At a glance', group: 'Features (icon cards)' },
       { name: 'featureTagsHeading', label: 'Heading above the check list', type: 'text', help: 'Default: Standards & Highlights', group: 'Features (icon cards)' },
 
       { name: 'stepsKicker', label: 'Kicker', type: 'text', half: true, group: 'How it works (steps)' },
