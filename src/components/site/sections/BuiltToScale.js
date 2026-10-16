@@ -4,15 +4,23 @@ export default function BuiltToScale({ data }) {
   return (
     <section className="bs">
       <div className="c">
-        <h2 className="rv">
-          {data.heading}
-          {data.headingAccent && <span>{data.headingAccent}</span>}
-        </h2>
         <div className="vw rv">
           <div className="rl">
             {slides.map((s, i) => (
               <div key={i} className="sd">
                 <div className="t">
+                  {(data.heading || data.headingAccent) &&
+                    (i === 0 ? (
+                      <h2 className="sh">
+                        {data.heading}
+                        {data.headingAccent && <span>{data.headingAccent}</span>}
+                      </h2>
+                    ) : (
+                      <div className="sh" aria-hidden="true">
+                        {data.heading}
+                        {data.headingAccent && <span>{data.headingAccent}</span>}
+                      </div>
+                    ))}
                   <span className="no">{String(i + 1).padStart(2, '0')}</span>
                   <h3>{s.title}</h3>
                   <i className="bar" />

@@ -56,7 +56,7 @@ body{overflow-x:clip}
 /* the global 'body :is(... small ...)' rule is more specific than '.cr .mf small', so this selector is deliberately long */
 html body .cr .c .mf small{font-size:max(15px,min(1.9rem,1.6vw))!important;letter-spacing:.03em;line-height:1.3}
 .cr .erow .im{position:relative}
-.cr .erow .im::after{content:"Stock Image";position:absolute;left:1rem;bottom:.8rem;font-size:1.5rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);text-shadow:0 1px 6px rgba(0,0,0,.55);pointer-events:none;user-select:none;white-space:nowrap}
+.cr .erow .im::after{content:"Stock Image";position:absolute;left:1rem;bottom:.8rem;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);text-shadow:0 1px 6px rgba(0,0,0,.55);pointer-events:none;user-select:none;white-space:nowrap}
 @media(max-width:900px){html body .cr .c .mf small{font-size:16px!important}.cr .erow .im::after{font-size:12px;left:.7rem;bottom:.5rem}}
 
 /* About "Industries" block: larger intro line, tighter gap under the heading */
@@ -88,8 +88,8 @@ html body section.ind-list .wrap .mats span{font-size:1.4rem!important;padding:.
 .apps-grid>div{overflow:hidden}
 .apps-grid .ap-im{position:relative;margin:-1.4rem -1.5rem 1.2rem;aspect-ratio:16/10;overflow:hidden;background:#e9edf3}
 .apps-grid .ap-im img{width:100%;height:100%;object-fit:cover;display:block}
-.apps-grid .ap-im::after{content:"Stock Image";position:absolute;left:1rem;bottom:.8rem;font-size:1.15rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);text-shadow:0 1px 6px rgba(0,0,0,.55);pointer-events:none;user-select:none;white-space:nowrap}
-@media(max-width:900px){.apps-grid .ap-im::after{font-size:11px;left:.7rem;bottom:.5rem}}
+.apps-grid .ap-im::after{content:"Stock Image";position:absolute;left:1rem;bottom:.8rem;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);text-shadow:0 1px 6px rgba(0,0,0,.55);pointer-events:none;user-select:none;white-space:nowrap}
+@media(max-width:900px){.apps-grid .ap-im::after{font-size:12px;left:.7rem;bottom:.5rem}}
 
 /* mobile: the two ghost words of the home "Crafting" block stack instead of overflowing */
 @media(max-width:900px){
@@ -133,8 +133,8 @@ html body section.ind-list .wrap .mats span{font-size:1.4rem!important;padding:.
 .bs .sd .t .bar{display:block;width:5rem;height:4px;border-radius:2px;background:var(--orange);margin:0 0 1.4rem}
 @media(min-width:901px){
   html body .bs .sd .t{align-self:center;padding-top:0}
-  html body .bs .sd .t .no{font-size:7.5rem;line-height:1;font-weight:800;color:#e1e3ea;letter-spacing:0;margin-bottom:-1.2rem}
-  html body .bs .sd .t h3{font-size:3rem!important;line-height:1.15;font-weight:800;color:var(--blue);margin-bottom:1rem}
+  html body .bs .sd .t .no{font-size:4.5rem;line-height:1;font-weight:800;color:#e1e3ea;letter-spacing:0;margin-bottom:-.8rem}
+  html body .bs .sd .t h3{font-size:2.6rem!important;line-height:1.15;font-weight:800;color:var(--blue);margin-bottom:1rem}
   html body .bs .sd .t p{font-size:1.5rem!important;line-height:1.55!important;max-width:36rem;color:#333}
   html body .bs .sd .t h4.sub{font-size:1.5rem}
   html body .bs .sd .t p.more,html body .bs .sd .t ul.pts{max-width:36rem}
@@ -149,3 +149,30 @@ html body section.ind-list .wrap .mats span{font-size:1.4rem!important;padding:.
   html body .hv .hv-hl li span{display:none}
 }
 @media(max-width:900px) and (max-height:660px){html body .hv .hv-hl{display:none!important}}
+
+/* heading repeated on every Built to Scale slide */
+.bs .sd .t .sh{display:block;font-size:3.4rem;font-weight:800;color:var(--blue);text-transform:uppercase;line-height:1.2;margin:0 0 1.6rem;padding:0}
+.bs .sd .t .sh span{display:block;color:var(--orange);font-size:var(--fs-sub);font-weight:700;line-height:1.15}
+.bs .vw{margin-top:0}
+@media(max-width:900px){
+  html body .bs .sd .t .sh{font-size:26px!important;margin:0 0 10px!important}
+  html body .bs .sd .t .sh span{font-size:20px!important}
+}
+
+/* Product pages: "Standards & Highlights" redesigned in the site's blue theme (same look as the blue "How it works" steps) */
+html body .kf{background:linear-gradient(135deg,#1f4e96 0%,#173c75 100%)!important;padding:6.5rem 0 7rem!important;color:#fff}
+html body .kf .pg-ghost{opacity:.07;color:#fff}
+html body .kf h2{margin:0 0 4.2rem}
+html body .kf h2::after{content:"";display:block;width:6rem;height:4px;border-radius:2px;background:var(--orange);margin:1.4rem auto 0}
+html body .kf .circ{display:flex;flex-wrap:wrap;justify-content:center;gap:1.8rem;max-width:98rem;margin:0 auto;padding:0 var(--gut)}
+html body .kf .circ div{flex:0 1 calc(25% - 1.4rem);min-width:16rem;width:auto;height:auto;aspect-ratio:auto;border-radius:1.6rem;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;gap:1.5rem;padding:2.4rem 2rem 2.6rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(2px);font-size:1.35rem!important;font-weight:700;line-height:1.35;transition:background .3s,color .3s,transform .3s,border-color .3s}
+html body .kf .circ div:hover{background:#fff;color:#1f4e96;border-color:#fff;transform:translateY(-4px)}
+html body .kf .circ svg{flex:none;box-sizing:border-box;width:4.4rem;height:4.4rem;padding:1.05rem;border-radius:50%;background:var(--orange);stroke:#fff;box-shadow:0 0 0 .55rem rgba(243,156,18,.22)}
+@media(max-width:900px){
+  html body .kf{padding:44px 0 48px!important}
+  html body .kf h2{margin-bottom:26px}
+  html body .kf .circ{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px}
+  html body .kf .circ div{min-width:0;flex:none;width:auto!important;aspect-ratio:auto!important;padding:16px 14px 18px!important;gap:12px;font-size:14px!important;border-radius:14px}
+  html body .kf .circ svg{width:38px;height:38px;padding:9px;box-shadow:0 0 0 4px rgba(243,156,18,.22)}
+}
+@media(max-width:480px){html body .kf .circ{grid-template-columns:1fr}}
