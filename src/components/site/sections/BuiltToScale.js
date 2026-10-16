@@ -13,7 +13,9 @@ export default function BuiltToScale({ data }) {
             {slides.map((s, i) => (
               <div key={i} className="sd">
                 <div className="t">
+                  <span className="no">{String(i + 1).padStart(2, '0')}</span>
                   <h3>{s.title}</h3>
+                  <i className="bar" />
                   {s.text && <p>{s.text}</p>}
                   {s.sub && <h4 className="sub">{s.sub}</h4>}
                   {s.more &&

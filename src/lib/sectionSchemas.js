@@ -31,7 +31,7 @@ export const SECTION_TYPES = {
       { name: 'subtitle', label: 'Sub-line', type: 'text' },
       { name: 'tagline', label: 'Sub-headline (small line under the sub-line)', type: 'text' },
       { name: 'text', label: 'Intro paragraph', type: 'textarea' },
-      { name: 'highlights', label: 'Quick highlights (chips)', type: 'tags', help: 'Comma separated' },
+      { name: 'highlights', label: 'Quick highlights (icon columns)', type: 'tags', help: 'Comma separated, up to 6. The first two words show in bold (e.g. "60+ years | of hands-on expertise"). To choose the bold part yourself write "Bold part :: rest of the text". The icon is picked automatically from the wording.' },
       { name: 'video', label: 'Video file (mp4)', type: 'video', half: true },
       { name: 'poster', label: 'Poster image', type: 'image', half: true },
       { name: 'buttons', label: 'Buttons', type: 'list', fields: buttonFields },
